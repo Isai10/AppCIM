@@ -11,6 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','PagesController@inicio')->name('inicio');
+Route::get('inicioSesion','PagesController@inicioSesion')->name('inicioSesion');
+Route::get('registroUsuario','PagesController@registroUsuario')->name('registroUsuario');
+Route::get('mainUsuario','PagesController@principalUsuario')->name('mainUsuario');
+Route::get('mainDocente','PagesController@principalMaestro')->name('mainMaestro');
+Route::get('cursoAlumno','PagesController@cursoAlumno')->name('cursoAlumno');
+Route::get('cursoDocente','PagesController@cursoProfesor')->name('cursoProfesor');
