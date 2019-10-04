@@ -34,4 +34,8 @@ class PagesController extends Controller
     {
         return view('cursoEditProfesor');
     }
+    public function crearExamen()
+    {
+        return view('crearExamen');
+    }
 }

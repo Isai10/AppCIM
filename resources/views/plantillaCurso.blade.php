@@ -1,7 +1,7 @@
 <div class = "container mt-5">
         <div class="row">
                 <div class="col-sm-4  ">
-                        <div class="container  bg-light rounded pt-3 pb-3 ">
+                        <div class="container  bg-white shadow-sm rounded pt-3 pb-3 ">
                                         <h5 >Nombre del profesor</h5>
                                         <div class="list-group  " id="list-tab" role="tablist">
                                                         <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-tema1" role="tab" aria-controls="tema1">Tema 1</a>
@@ -16,7 +16,7 @@
                         </div>
                 </div>
                 <div class="col-sm-8 ">
-                                <div class="container  bg-light rounded pt-5 pb-5 pl-4 pr-4 ">
+                                <div class="container  bg-white shadow-sm rounded pt-5 pb-5 pl-5 pr-5 ">
                                                
                                                 <div class="tab-content" id="nav-tabContent">
                                                                 <div class="tab-pane fade show active" id="list-tema1" role="tabpanel" aria-labelledby="list-tema1-list">

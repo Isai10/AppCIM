@@ -1,0 +1,27 @@
+.page-footer 
+{
+    background-color: #A1A499;
+
+}
+.navbar
+{
+    background-color: white !important;
+}
+
+.back{
+    background-color: #F8F8FB;
+}
+.lineaEscudo{
+    border-right: 1px #1b3257 solid;
+    
+    height: 45px;
+}
+.logoUASLP-ING{
+    width: 50%;
+    height: 50%;
+}
+
+.spaces
+{
+  
+}

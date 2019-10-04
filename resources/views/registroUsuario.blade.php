@@ -1,6 +1,6 @@
 @extends('plantilla')
 @section('seccion')
-<div class = "container p-4  border  mt-5 rounded bg-light" style="width: 25rem;">
+<div class = "container p-4  shadow-sm  mt-5 rounded bg-white" style="width: 25rem;">
 <form>
   <div>
     <h1 class = "mt-1 display-4 text-center">Registrarme</h1>

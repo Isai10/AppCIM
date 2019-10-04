@@ -7,16 +7,20 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset("plugins/bootstrap/css/bootstrap.min.css")}}" >
+    <link rel="stylesheet" href="{!! asset('CSS/plantillamain.css')!!}" >
     <title>Plataforma CIM</title>
 
     
   </head>
-  <body>
+  <body class="back">
     <div class="">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand display-4" href="{{route('inicio')}}">Centro de Investigacion de Materiales</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light  shadow-sm">
+       
+
+        <a class="navbar-brand  "  href="{{route('inicio')}}"><img src="{{asset('images/logo.png')}}" alt="#" class = "logoUASLP-ING"></a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
                 </button>
               
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -47,10 +51,10 @@
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                   </form>-->
                   <div class="ml-auto">
-                    <button   onclick="location.href = '{{ route('inicioSesion') }}'" type="button" class="btn btn-outline-primary ">Iniciar Sesión</button>
+                    <button   onclick="location.href = '{{ route('inicioSesion') }}'" type="button" class="btn btn-light ">Iniciar Sesión</button>
                   </div>
                   <div class="ml-1">
-                        <button onclick="location.href = '{{ route('registroUsuario') }}'"type="button" class="btn btn-outline-primary">Registrate</button>
+                        <button onclick="location.href = '{{ route('registroUsuario') }}'"type="button" class="btn btn-light">Registrate</button>
                       </div>
                 </div>
               </nav>
@@ -58,6 +62,12 @@
     <div class="container-fluid">
         @yield('seccion')
     </div>
+    <br><br><br><br>
+    <footer class="page-footer font-small pt-4">
+        <div class="footer-copyright text-center py-3">© 2019 Copyright:
+            <a href="#" class="text-white" >UASLP</a>
+          </div>
+      </footer>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
