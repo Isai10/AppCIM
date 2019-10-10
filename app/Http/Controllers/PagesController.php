@@ -8,7 +8,7 @@ class PagesController extends Controller
 {
     public function inicio()
     {
-        return view('welcome');
+        return view('home');
     }
     public function inicioSesion()
     {
