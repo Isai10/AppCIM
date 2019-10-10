@@ -65,12 +65,12 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            /*'url' => $DATABASE_URL['url']env('DATABASE_URL'),*/
-            'host' => $DATABASE_URL['host']/*env('DB_HOST', '127.0.0.1')*/,
-            'port' => $DATABASE_URL['port']/*env('DB_PORT', '5432')*/,
-            'database' =>ltrim($DATABASE_URL['path'],'/')/*env('DB_DATABASE', 'forge')*/,
-            'username' => $DATABASE_URL['user']/*env('DB_USERNAME', 'forge')*/,
-            'password' => $DATABASE_URL['pass']/*env('DB_PASSWORD', '')*/,
+            'url' => env('postgres://wdmmzlhiaddrcg:81a2f8962f333e90280f14ec26cd997a61694838a075ec1ce18b08a8444a6d9d@ec2-54-243-44-102.compute-1.amazonaws.com:5432/d1j9nfjqnbc0bq'),
+            'host' => env('DB_HOST', 'ec2-54-243-44-102.compute-1.amazonaws.com'),
+            'port' => env('DB_PORT', '5432'),
+            'database' =>env('DB_DATABASE', 'd1j9nfjqnbc0bq'),
+            'username' => env('DB_USERNAME', 'wdmmzlhiaddrcg'),
+            'password' => env('DB_PASSWORD', '81a2f8962f333e90280f14ec26cd997a61694838a075ec1ce18b08a8444a6d9d'),
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
