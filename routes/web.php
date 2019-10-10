@@ -16,6 +16,10 @@ Route::get('inicioSesion','PagesController@inicioSesion')->name('inicioSesion');
 Route::get('registroUsuario','PagesController@registroUsuario')->name('registroUsuario');
 Route::get('mainUsuario','PagesController@principalUsuario')->name('mainUsuario');
 Route::get('mainDocente','PagesController@principalMaestro')->name('mainMaestro');
-Route::get('cursoAlumno','PagesController@cursoAlumno')->name('cursoAlumno');
+Route::get('cursoAlumno','ContentCursoAlumnoController@cursoAlumno')->name('cursoAlumno');
 Route::get('cursoDocente','PagesController@cursoProfesor')->name('cursoProfesor');
 Route::get('crearExamen','PagesController@crearExamen')->name('crearExamen');
+Route::get('crearPregunta','PagesController@crearPregunta')->name('crearPregunta');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

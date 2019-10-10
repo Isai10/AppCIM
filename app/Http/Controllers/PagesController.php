@@ -26,10 +26,7 @@ class PagesController extends Controller
     {
         return view('principalMaestro');
     }
-    public function cursoAlumno()
-    {
-        return view('cursoAlumno');
-    }
+    
     public function cursoProfesor()
     {
         return view('cursoEditProfesor');
@@ -37,5 +34,10 @@ class PagesController extends Controller
     public function crearExamen()
     {
         return view('crearExamen');
+    }
+
+    public function crearPregunta()
+    {
+        return view('crearPregunta');
     }
 }

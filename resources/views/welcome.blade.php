@@ -1,7 +1,7 @@
 
-@extends('plantilla')
+@extends('layouts.app')
 
-@section('seccion')
+@section('content')
     <div class="container">
             <div class = "container border rounded mt-5 " style="width: 35rem; background-image:url({{asset('images/image1.jpg')}}); ">
                     <br><br><br><br><br><br><br><br><br><br><br>
