@@ -25,7 +25,7 @@
 </head>
 <body class="back">
     <div id="app">
-        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
            <!-- <div class="container">-->
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <img src="{{asset('images/logo.png')}}" alt="#" class = "logoUASLP-ING">
@@ -77,6 +77,7 @@
         </nav>
 
         <main class="py-4">
+            <br><br><br>
             @yield('content')
         </main>
         <br><br><br><br>

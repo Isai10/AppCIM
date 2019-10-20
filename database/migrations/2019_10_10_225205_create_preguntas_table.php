@@ -14,7 +14,10 @@ class CreatePreguntasTable extends Migration
     public function up()
     {
         Schema::create('preguntas', function (Blueprint $table) {
-            $table->bigIncrements('idPreg');
+            $table->increments('id');
+            $table->unsignedInteger('idExamen');
+            $table->string('tipoPregunta');
+            $table->string('descripcion');
             $table->timestamps();
         });
     }

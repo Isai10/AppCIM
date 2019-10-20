@@ -40,6 +40,15 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Role::class)->withTimestamps();
     }
+    public function curso()
+    {
+        return $this->belongsToMany(Curso::class,'curso_user')->withPivot('user_id','curso_id')->withTimestamps();
+    }
+
+    public function getCursos()
+    {
+        return $this->curso()->get();
+    }
     public function authorizeRoles($roles)
     {
         if($this->hasAnyRole($roles))
@@ -66,11 +75,35 @@ class User extends Authenticatable
     }
     return false;
 }
+public function getRole()
+{
+    $roles = ['alumno','profesor','invitado'];
+    foreach ($roles as $role) {
+        # code...
+        $rol = $this->roles()->where('nombre', $role)->first();
+        if($rol)
+        {
+            return $rol;
+        }
+            
+    }
+    return false;
+}
 public function hasRole($role)
 {
     if ($this->roles()->where('nombre', $role)->first()) {
         return true;
     }
     return false;
+}
+public function hasThisCurso($idcurso)
+{
+    if($this->curso()->where('curso_id',$idcurso)->first())
+    {
+        return true;
+    }
+    else {
+        return false;
+    }
 }
 }

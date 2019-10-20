@@ -4,19 +4,23 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRoleUserTable extends Migration
+class CreateAtividadesTable extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
+     
      */
     public function up()
     {
-        Schema::create('role_user', function (Blueprint $table) {
+        Schema::create('atividades', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('role_id');
-            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('idCurso');
+            $table->unsignedInteger('idTipoActivida');
+            $table->string('idGenerico')->unique();
+            $table->unsignedInteger('idTema');
+            $table->unsignedInteger('idSubtema');
             $table->timestamps();
         });
     }
@@ -28,6 +32,6 @@ class CreateRoleUserTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('role_user');
+        Schema::dropIfExists('atividades');
     }
 }
