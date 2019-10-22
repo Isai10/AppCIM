@@ -15,6 +15,10 @@
                     @endif
 
                     ¡Has sido registrado exitosamente!
+                    
+                    <a href = "{{route('mainUsuario')}}"  class="btn btn-primary btn-block">
+                        Continuar
+                       </a>
                 </div>
             </div>
         </div>

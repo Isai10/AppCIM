@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Curso;
+use App\User;
 use Illuminate\Http\Request;
 
 class ContentCursoAlumnoController extends Controller
@@ -11,11 +12,13 @@ class ContentCursoAlumnoController extends Controller
         $this->middleware('auth');
     }
     //
-    public function cursoAlumno(Request $request)
+    public function cursoAlumno(Request $request,$idCurso)
     {
         if($request->user()->authorizeRoles([ 'alumno']))
         {
-            return view('cursoAlumno');
+            $curso = Curso::findOrFail($idCurso);
+            $profesor = User::findOrFail($curso->idProfesor);
+            return view('cursoAlumno',compact('curso','profesor'));
         }
         else
         {

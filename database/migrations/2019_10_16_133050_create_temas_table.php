@@ -16,6 +16,7 @@ class CreateTemasTable extends Migration
         Schema::create('temas', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('idCurso');
+            $table->foreign('idCurso')->references('id')->on('cursos')->onDelete('cascade');
             $table->string('nombre');
             $table->timestamps();
         });

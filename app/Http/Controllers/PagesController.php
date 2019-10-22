@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Curso;
+use App\User;
 use Illuminate\Http\Request;
-
+use App\Http\Controllers\Auth;
 class PagesController extends Controller
 {
     public function inicio()
@@ -22,15 +23,22 @@ class PagesController extends Controller
     {
         return view('principalUsuario');
     }
-    public function principalMaestro()
+    public function cursoProfesor(Request $request,$idCurso,$idUser)
     {
-        return view('principalMaestro');
+        if($request->user()->authorizeRoles([ 'profesor']))
+        {
+            $curso = Curso::findOrFail($idCurso);
+            $profesor = User::findOrFail($curso->idProfesor);
+            $rol = User::findOrFail($idUser)->getRole();
+            return view('cursoAlumno',compact('curso','profesor','rol'));
+        }
+        else
+        {
+            return redirect('home');
+        }
     }
     
-    public function cursoProfesor()
-    {
-        return view('cursoEditProfesor');
-    }
+    
     public function crearExamen()
     {
         return view('crearExamen');

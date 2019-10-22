@@ -17,11 +17,15 @@ class CreateAtividadesTable extends Migration
         Schema::create('atividades', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('idCurso');
+            $table->foreign('idCurso')->references('id')->on('cursos')->onDelete('cascade');
             $table->unsignedInteger('idTipoActivida');
             $table->string('idGenerico')->unique();
             $table->unsignedInteger('idTema');
-            $table->unsignedInteger('idSubtema');
+            $table->foreign('idTema')->references('id')->on('temas')->onDelete('cascade');
             $table->timestamps();
+
+
+            
         });
     }
 

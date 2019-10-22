@@ -12,7 +12,7 @@
                                           @if ($rol == 'alumno')
                                                  <a href="{{route('curso.mas')  }}" class="btn btn-info  text-white">Ver mas cursos</a>
                                           @elseif ($rol == 'profesor')
-                                                <a href="{{route('curso.mas')  }}" class="btn btn-info  text-white"data-toggle="modal" data-target="#exampleModal">Crear curso</a>
+                                                <a href="#" class="btn btn-info  text-white"data-toggle="modal" data-target="#exampleModal">Crear curso</a>
                                           @endif
                                         </div>
                                       </div>
@@ -33,7 +33,7 @@
                                         <h6 class="card-subtitle  text-muted text-left ">{{App\User::find($curso->idProfesor)->name}}</h6>
                                         <br>
 
-                                        <a href="" class="btn btn-warning ">Ver curso</a>
+                                        <a href="{{route('cursoAlumno',['idCurso'=>$curso->id])}}" class="btn btn-warning ">Ver curso</a>
                                 </div>
                         </div>
                 
@@ -59,8 +59,7 @@
                                         <h5 class="card-title font-weight-bold text-left">{{$curso->nombre}}</h5>
                                         <h6 class="card-subtitle  text-muted text-left ">{{App\User::find($curso->idProfesor)->name}}</h6>
                                         <br>
-
-                                        <a href="" class="btn btn-warning ">Ver curso</a>
+                                        <a href="{{route('cursoProfesor',['idCurso'=>$curso->id,'idUser' => $idUser])}}" class="btn btn-warning ">Ver curso</a>
                                 </div>
                         </div>
                 
@@ -95,6 +94,7 @@
  <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog " role="document">
+                  <form action="{{route('curso.crear')}}" method="POST">
                   <div class="modal-content border-0">
                     <div class="modal-header border-0">
                       <h5 class="modal-title" id="exampleModalLabel">Crea un nuevo curso</h5>
@@ -103,20 +103,22 @@
                       </button>
                     </div>
                     <div class="modal-body ">
-                       <form action="{{route('curso.crear')}}" method="POST">
+                       
                                 @csrf
                                 <input
                                 type="text" name="nombre"
                                 placeholder="Nombre del curso" class="form-control mb-2"
                                 value="{{ old('nombre') }}">
-                                <button type="submit" class="btn btn-primary">Crear</button>
-                       </form>
+                               
+                       
                     </div>
                     <div class="modal-footer border-0">
+                     <button type="submit" class="btn btn-primary">Crear</button>
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                      
                     </div>
                   </div>
+                </form>
                 </div>
               </div>
     </div>

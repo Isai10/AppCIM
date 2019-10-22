@@ -96,6 +96,7 @@ class MainUsuario extends Controller
                 ->get();
                 return back()->with('mensaje', 'Curso agregado');
            }
+           else 
            {
                 return back()->with('error', 'No se puede agregar este curso porque ya ha sido agregado');
            }

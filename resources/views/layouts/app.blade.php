@@ -27,9 +27,16 @@
     <div id="app">
         <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
            <!-- <div class="container">-->
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="{{asset('images/logo.png')}}" alt="#" class = "logoUASLP-ING">
-                </a>
+               <div class="">
+                    <a class="navbar-brand" href="{{ url('/') }}">
+                        <img src="{{asset('images/logo.png')}}" alt="#" class = "logoUASLP-ING">
+                    </a>
+                    <a class="navbar-brand" href="{{ route('mainUsuario') }}">
+                        Home
+                    </a>
+               </div>
+               
+                
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -55,7 +62,7 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle text-right" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} / Alumno <span class="caret"></span>
+                                {{ Auth::user()->name }}  <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -81,9 +88,9 @@
             @yield('content')
         </main>
         <br><br><br><br>
-        <footer class="page-footer font-small pt-4">
+        <footer class="page-footer font-small pt-4 d-flex align-items-end ">
             <div class="footer-copyright text-center py-3">© 2019 Copyright:
-                <a href="#" class="text-white" >UASLP</a>
+                <a href="#" class="text-white " >UASLP</a>
               </div>
           </footer>
     </div>
