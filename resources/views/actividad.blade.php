@@ -16,14 +16,13 @@
         @endphp
         <div class = "row ml-5">
             
-                @for ($cont=0;$cont<5; $cont++ )
+                @foreach ($actividades as $actividad )
                 <ul class="list-group list-group-horizontal shadow-sm border-0  m-2 ">
-                        <li class="list-group-item border-0 "><h5 class = "font-weight-bold text-left">Nombre actividad</h5></li>
-                        <li class="list-group-item border-0">Tipo: Examen</li>
-                        <li class="list-group-item border-0"> <a href="#" class="btn-light btn-sm  ">Editar</a></li>
+                        <li class="list-group-item border-0 "><h5 class = "font-weight-bold text-left">{{$actividad['nombre']}}</h5></li>
+                        <li class="list-group-item border-0">Tipo: {{$actividad['tipo']}}</li>
+                        <li class="list-group-item border-0"> <a href="{{route('curso.actividad.editar',['idAct'=>$actividad['id'],'idTipo'=>$actividad['id_tipo'], 'idActGen' => $actividad['id_act_gen'] ])}}" class="btn-light btn-sm  ">Editar</a></li>
                         <li class="list-group-item border-0"> <a href="#" class="btn btn-primary btn-sm  ">Ver actividad</a></li>
-                       
-                        <li class="list-group-item border-0"><a href="#" class="close btn text-right btn-sm " aria-label="Close">
+                        <li class="list-group-item border-0"><a href="{{route('curso.actividad.eliminar',['idAct'=>$actividad['id'],'tipo'=>$actividad['tipo'],'idGen'=>$actividad['id_act_gen']])}}" class="close btn text-right btn-sm " aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                         </a></li>
                 </ul>
@@ -43,7 +42,7 @@
                                 </div>
                         </div> -->
                         
-                @endfor
+                @endforeach
         </div>
         
 
@@ -60,7 +59,7 @@
  <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog " role="document">
-                  <form action="#" method="POST">
+                  <form action="{{route('curso.actividad.crear')}}" method="POST">
                   <div class="modal-content border-0">
                     <div class="modal-header border-0">
                       <h5 class="modal-title" id="exampleModalLabel">Crea nueva actividad</h5>
@@ -75,14 +74,59 @@
                                 type="text" name="nombre"
                                 placeholder="Nombre de la actividad" class="form-control mb-2"
                                 value="{{ old('nombre') }}">
-                                <select class="form-control" name = "tipo" placeholder="Tipo de actividad" >
-                                        <option disabled selected>Tipo</option>
-                                        <option value="volvo">Examen</option>
-                                        <option value="saab">Tarea</option>
+                                <select class="form-control select" name = "tipo" placeholder="Tipo de actividad"  onclick="ActivarControlesAct();">
+                                        <option disabled selected >Tipo</option>
+                                        <option value="examen" >Examen</option>
+                                        <option value="tarea">Tarea</option>
                                 </select>
-                                
-
-                               
+                        <div class="actividadControles" > 
+                              <!--  <div class="row mb-4">
+                                                <div class="col">
+                                                    <input type="text" class="form-control" placeholder="Título">
+                                                </div>
+                                                
+                                            </div>
+                                            
+                                            
+                                            <div class="row mb-4">
+                                                <div class="col">
+                                                    <select class="form-control"  placeholder="Tema" >
+                                                        <option disabled selected>Tema</option>
+                                                        <option value="volvo">Volvo</option>
+                                                        <option value="saab">Saab</option>
+                                                        <option value="mercedes">Mercedes</option>
+                                                        <option value="audi">Audi</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-4">
+                                                   
+                                                    <div class="col">
+                                                            <div class="form-group">
+                                                        <label for="fecha" class="form-text text-muted">Fecha de examen</label>
+                                                        <input type="date" name="fecha"  class="form-control" >
+                                                        </div>
+                                                    </div>
+                                                     
+                                            </div>
+                                            <div class="row mb-4">
+                                                   
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                        <label for="hora_inicio" class="form-text text-muted">Hora de inicio</label>
+                                                        <input type="time"  value="10:45:00"class="form-control" name ="hora_inicio">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                            <label for="hora_fin" class="form-text text-muted">Hora de cierre</label>
+                                                            <input type="time" value="11:45:00" class="form-control" name ="hora_fin">
+                                                            </div>
+                                                        </div>
+                                                     
+                                            </div>
+                                        -->
+                        </div>
                        
                     </div>
                     <div class="modal-footer border-0">

@@ -1,5 +1,6 @@
 <?php
 use App\Curso;
+use App\User;
 use Illuminate\Database\Seeder;
 
 class CursosTableSeeder extends Seeder
@@ -12,24 +13,24 @@ class CursosTableSeeder extends Seeder
     public function run()
     {
         //
+ 
         $curso = new Curso();
         $curso->nombre = 'matematicas';
-        $curso->idProfesor = 1;
+        $curso->idProfesor = 2;
         $curso->save();
 
         $curso = new Curso();
         $curso->nombre = 'quimica';
-        $curso->idProfesor = 1;
+        $curso->idProfesor = 2;
         $curso->save();
-        
         $curso = new Curso();
         $curso->nombre = 'español';
-        $curso->idProfesor = 1;
+        $curso->idProfesor = 2;
         $curso->save();
 
         $curso = new Curso();
         $curso->nombre = 'ingles';
-        $curso->idProfesor = 1;
+        $curso->idProfesor = 2;
         $curso->save();
         
 

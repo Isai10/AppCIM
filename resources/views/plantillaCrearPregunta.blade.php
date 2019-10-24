@@ -1,40 +1,32 @@
 
 <div class = "container p-4   mt-5 shadow-sm rounded-lg bg-white" style="width: 25rem;">
-        <form >
-          <div>
-            <h1 class = "mt-1 display-4 text-center">Crea Examen</h1>
-          </div>  
-          <br>
-          
+        <form action="{{route('curso.actividad.examen.pregunta.crear',$examen['idExamen'])}}" method="POST">
+                @csrf
+                <div >
+                       
+                      <h1 class = "mt-1 h5 mb-3 text-muted">Crear pregunta</h1>
+                    </div>  
             <div class="row mb-4">
                 <div class="col">
-                    <input type="text" class="form-control" placeholder="Título">
+                    <textarea type="text" name="pregunta" rows = "3"class="form-control" placeholder="Enunciado pregunta"></textarea>
                 </div>
             </div>
             <div class="row mb-4">
                 <div class="col">
-                    <select class="form-control" placeholder="Tema" >
-                        <option disabled selected>Tema</option>
-                        <option value="volvo">Volvo</option>
-                        <option value="saab">Saab</option>
-                        <option value="mercedes">Mercedes</option>
-                        <option value="audi">Audi</option>
+                    <select class="form-control select-tipo-pregunta" placeholder="Tipo"  name = "tipo" onclick="ActivarControlesOpcionMult();">
+                        <option disabled selected >Tipo</option>
+                        <option value="opcion_multiple">Opcion multiple</option>
+                        <option value="abierta">Abierta</option>
+                        <option value="falso_verdadero">Falso o verdadero</option>
                     </select>
                 </div>
             </div>
-            <div class="row mb-4">
-                <div class="col-4">
-                    <input type="text" class="form-control" placeholder="Día">
-                </div>
-                <div class="col-4">
-                    <input type="text" class="form-control" placeholder="Mes">
-                 </div>
-                 <div class="col-4">
-                        <input type="text" class="form-control" placeholder="Año">
-                </div>
+            
+
+            <div class="opcionesExamenes" >
+                    
             </div>
-          <a href = "{{route('inicioSesion')}}"  class="btn btn-primary btn-block">
-                Crear
-               </a>
+           
+            <button type="submit" class="btn btn-primary btn-block">Crear</button>
         </form>
         </div>

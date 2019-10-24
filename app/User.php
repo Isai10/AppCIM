@@ -44,7 +44,7 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Curso::class,'curso_user')->withPivot('user_id','curso_id')->withTimestamps();
     }
-
+    
     public function getCursos()
     {
         return $this->curso()->get();

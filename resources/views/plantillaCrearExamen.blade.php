@@ -17,7 +17,7 @@
             
             <div class="row mb-4">
                 <div class="col">
-                    <select class="form-control" placeholder="Tema" >
+                    <select class="form-control"  placeholder="Tema" >
                         <option disabled selected>Tema</option>
                         <option value="volvo">Volvo</option>
                         <option value="saab">Saab</option>

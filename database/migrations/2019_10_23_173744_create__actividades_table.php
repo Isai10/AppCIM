@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTemasTable extends Migration
+class CreateActividadesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,15 @@ class CreateTemasTable extends Migration
      */
     public function up()
     {
-        Schema::create('temas', function (Blueprint $table) {
+        Schema::create('actividades', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('curso_id');
             $table->foreign('curso_id')->references('id')->on('cursos')->onDelete('cascade');
-            $table->string('nombre');
+            $table->unsignedInteger('tipoActividad_id');
+            $table->foreign('tipoActividad_id')->references('id')->on('tipo_actividads')->onDelete('cascade');
+            $table->string('idGenerico')->unique();
+            $table->unsignedInteger('tema_id');
+            $table->foreign('tema_id')->references('id')->on('temas')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -29,6 +33,6 @@ class CreateTemasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('temas');
+        Schema::dropIfExists('actividades');
     }
 }
