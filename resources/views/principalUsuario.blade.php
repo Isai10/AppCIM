@@ -33,7 +33,7 @@
                                         <h6 class="card-subtitle  text-muted text-left ">{{App\User::find($curso->idProfesor)->name}}</h6>
                                         <br>
 
-                                        <a href="{{route('cursoAlumno',['idCurso'=>$curso->id])}}" class="btn btn-warning ">Ver curso</a>
+                                        <a href="{{route('cursoAlumno',['idCurso'=>$curso->id,'idUser' => $idUser])}}" class="btn btn-warning ">Ver curso</a>
                                 </div>
                         </div>
                 

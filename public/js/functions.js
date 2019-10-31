@@ -1,5 +1,34 @@
+var texto="";
+function CrearPregRellTemp()
+{
+    const buttonAdd = document.querySelector('.preg-relleno');
+    
+    
 
+        buttonAdd.addEventListener('click', evento=> {
+            const contenido = document.querySelector('.cont-resp-relleno');
+                texto.push
+                contenido.innerHTML=  
+                `
+                <div class = "row ml-2 mr-1 mt-1">
+                <ul class="list-group list-group-horizontal  border-0  col ">
+                        <li class="list-group-item border-0 "><h6 class = "font-weight-bold text-left"> ${texto}</h5></li>
+                </ul>
+                <div class="w-100"></div>
+                </div>
+            
+                `
+        });
 
+}
+
+function LeerInputText()
+{
+    const respRelleno = document.querySelector('.resp-relleno');
+    respRelleno.addEventListener('keydown', evento=> {
+       texto = evento.target.value.toString();
+    });
+}
 function ActivarControlesOpcionMult()
 {
     const select = document.querySelector('.select-tipo-pregunta');
@@ -19,12 +48,14 @@ function ActivarControlesOpcionMult()
                         </div>
                         <div class="row mb-4">
                                 <div class="col-md-8 ">
-                                    <input type="text" class="form-control" placeholder="Respuesta de relleno" name = "resp-erroneas" >
+                                    <input type="text" class="form-control resp-relleno" placeholder="Respuesta de relleno" name = "resp-erroneas" onkeydown="LeerInputText();" >
                                 </div>
                                 <div class = "col">
-                                        <a href = "{{route('inicioSesion')}}"  class="btn btn-primary" >
-                                               Guardar
+                                        <a href = "#"  class="btn btn btn-light preg-relleno" onclick="CrearPregRellTemp();">
+                                               +
                                         </a>
+                                </div>
+                                <div class="cont-resp-relleno">
                                 </div>
                                 
                             </div>
@@ -40,11 +71,11 @@ function ActivarControlesOpcionMult()
             <div id = "op-falso-verdadero " class = "mb-4">
             
                 <div class="form-check form-check-inline">
-                <input class="form-check-input " type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                <input class="form-check-input " type="radio" name="bool" id="inlineRadio1" value="true">
                 <label class="form-check-label" for="inlineRadio1">Falso</label>
                  </div>
                  <div class="form-check form-check-inline ">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                <input class="form-check-input" type="radio" name="bool" id="inlineRadio2" value="false">
                 <label class="form-check-label" for="inlineRadio2">Verdadero</label>
                     </div>
 

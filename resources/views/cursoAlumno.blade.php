@@ -10,6 +10,8 @@
                                             <h5 > Profesor: <p class="font-weight-bold">{{$profesor->name}}</p></h5>
                                            
                                             <div class="btn-group mt-3 mb-3 " role="group" aria-label="Basic example">
+                                                @if($rol->nombre == "profesor")
+                                                
                                                         <div class="btn-group" role="group">
                                                                         <a id="btnGroupDrop1"  class="btn btn-light text-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                                           Tema
@@ -20,13 +22,16 @@
                                                                           <a class="dropdown-item" href="#">Eliminar</a>
                                                                         </div>
                                                                       </div>
-                                                        <a href = "{{route('curso.actividad')}}"  class="btn text-info btn-light  ml-2 mr-2">
-                                                            Actividades
-                                                        </a>
+                                                @endif
+                                                <a href = "{{route('curso.actividad',['idCurso'=>$curso->id,'idUser'=>$user->id])}}"  class="btn text-info btn-light  ml-2 mr-2">
+                                                        Actividades
+                                                </a>
+                                                       
+                                               
 
                                              </div>
                                                         
-                                          
+                                             
                                             
                                             <div class="list-group  " id="list-tab" role="tablist">
                                                             <a class="list-group-item list-group-item-action active border-0" id="list-home-list" data-toggle="list" href="#list-tema1" role="tab" aria-controls="tema1">Tema 1</a>
@@ -43,7 +48,7 @@
                     </div>
                     <div class="col-sm-8 ">
                                     <div class="container   bg-white shadow-sm rounded pt-5 pb-5 pl-5 pr-5 " >
-                                                   
+                                       
                                                     <div class="tab-content" id="nav-tabContent" data-spy="scroll">
                                                                     <div class="tab-pane fade show active" id="list-tema1" role="tabpanel" aria-labelledby="list-tema1-list">
                                                                             <h5>Tema1</h5>

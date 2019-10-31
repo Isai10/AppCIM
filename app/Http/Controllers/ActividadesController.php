@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\User;
 use App\Curso;
 use App\Actividade;
 use App\Examene;
@@ -62,20 +62,21 @@ class ActividadesController extends Controller
             }
         }
     }
-    public function actividad(Request $request)
+    public function actividad(Request $request,$idCurso,$idUser)
     {
-        if($request->user()->authorizeRoles([ 'profesor']))
+        if($request->user()->authorizeRoles([ 'profesor','alumno']))
         {
             //$tipoAct = $curso = Curso::findOrFail(1);
+           // dd('hola');
             $curso = DB::Table('actividades')
             ->join('tipo_actividads',"actividades.tipoActividad_id","=","tipo_actividads.id")
-            ->where('actividades.curso_id',"=",1)
+            ->where('actividades.curso_id',"=",$idCurso)
             ->select('actividades.id AS idAct','actividades.idGenerico','actividades.tipoActividad_id','tipo_actividads.tipo','actividades.curso_id')
             ->get();
 
             
             
-            
+            $rol =  User::findOrFail($idUser)->getRole();
             //$curso = Curso::findOrFail(1);
             $actividades = collect();
             //dd($curso);
@@ -93,10 +94,10 @@ class ActividadesController extends Controller
             }
             $actividades = $actividades->all();
            // dd($actividades->all());
-           return view('actividad',compact('actividades'));
+           return view('actividad',compact('actividades','rol','idCurso'));
         }
     }
-    public function crearActividad(Request $request)
+    public function crearActividad(Request $request,$idCurso)
     {
         if($request->user()->authorizeRoles([ 'profesor']))
         {
@@ -108,16 +109,17 @@ class ActividadesController extends Controller
                 $actgeneric->descripcion = $request->descripcion;
                 $actgeneric->save();
                 $tipo = "examen";
+                $idTipoAct = 1;
                 break;
                 case "tarea":
                 //Completar
                 break;
             }
             $act = new Actividade();
-            $act->curso_id = 1;
+            $act->curso_id = $idCurso;
             $act->idGenerico = $actgeneric->id;
             $act->tema_id=1;
-            $act->tipoActividad_id = 1;
+            $act->tipoActividad_id = $idTipoAct;
             $act->save();
 
             return back();

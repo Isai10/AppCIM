@@ -12,13 +12,15 @@ class ContentCursoAlumnoController extends Controller
         $this->middleware('auth');
     }
     //
-    public function cursoAlumno(Request $request,$idCurso)
+    public function cursoAlumno(Request $request,$idCurso,$idUser)
     {
         if($request->user()->authorizeRoles([ 'alumno']))
         {
             $curso = Curso::findOrFail($idCurso);
             $profesor = User::findOrFail($curso->idProfesor);
-            return view('cursoAlumno',compact('curso','profesor'));
+            $user = User::findOrFail($idUser);
+            $rol = User::findOrFail($idUser)->getRole();
+            return view('cursoAlumno',compact('curso','user','rol','profesor'));
         }
         else
         {

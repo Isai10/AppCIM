@@ -21,11 +21,19 @@ class ExamenController extends Controller
     {
         $this->middleware('auth');
     }
+    public function crearPreguntaRelleno(){
+        if($request->user()->authorizeRoles([ 'profesor']))
+        {
 
+        }
+    }
     public function crearPregunta(Request $request, $idExam)
     {
         if($request->user()->authorizeRoles([ 'profesor']))
         {
+
+            if($request->tipo == "opcion_multiple")
+            {
             $newPreg = new Pregunta();
             $newPreg->examene_id= $idExam;
             $newPreg->tipoPregunta = $request->tipo;
@@ -38,6 +46,31 @@ class ExamenController extends Controller
             $resp->VoF = true;
             $resp->save();
             return(\back());
+            }
+            else if ($request->tipo == "abierta")
+            {
+                $newPreg = new Pregunta();
+                 $newPreg->examene_id= $idExam;
+                    $newPreg->tipoPregunta = $request->tipo;
+                 $newPreg->pregunta= $request->pregunta;
+                 $newPreg->save();
+                 return(\back());
+            }
+            else if ($request->tipo =="falso_verdadero")
+            {
+                $newPreg = new Pregunta();
+                $newPreg->examene_id= $idExam;
+                $newPreg->tipoPregunta = $request->tipo;
+                $newPreg->pregunta= $request->pregunta;
+                $newPreg->save();
+    
+                $resp = new Respuesta();
+                $resp->pregunta_id = $newPreg->id;
+                $resp->respuesta = $request->bool;
+                $resp->VoF = true;
+                $resp->save();
+                return(\back());
+            }
         }
 
     }
@@ -47,6 +80,25 @@ class ExamenController extends Controller
         {
             DB::table('preguntas')->where('id', '=',$idPreg)->delete();
             return(\back());
+        }
+    }
+    public function examen(Request $request,$idExam)
+    {
+        if($request->user()->authorizeRoles([ 'profesor','alumno']))
+        {
+               
+                $examen = Examene::findOrFail($idExam)->pregunta()->paginate(1);
+                $nombreExamen =  Examene::findOrFail($idExam);
+                if($examen->count()>0)
+                {
+                    return view('examen',compact('examen','nombreExamen'));
+                }
+                else{
+                    back();
+                }
+        }
+        else{
+            \back();
         }
     }
 }

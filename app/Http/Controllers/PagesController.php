@@ -29,8 +29,9 @@ class PagesController extends Controller
         {
             $curso = Curso::findOrFail($idCurso);
             $profesor = User::findOrFail($curso->idProfesor);
+            $user = User::findOrFail($idUser);
             $rol = User::findOrFail($idUser)->getRole();
-            return view('cursoAlumno',compact('curso','profesor','rol'));
+            return view('cursoAlumno',compact('curso','user','rol','profesor'));
         }
         else
         {

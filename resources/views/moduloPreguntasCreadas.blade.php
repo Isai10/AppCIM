@@ -22,7 +22,7 @@
                         <li class="list-group-item border-0 "><h6 class = "font-weight-bold text-left">{{$pregunta->pregunta}}</h5></li>
                         <li class="list-group-item border-0 "><h6 class = "">Valor: <strong>3 pts</strong></h5></li>    
                         <li class="list-group-item border-0"> <a href="#" class="btn-light btn-sm  ">Editar</a></li>
-                        <li class="list-group-item border-0"> <a href="#" class="btn btn-primary btn-sm  ">Ver actividad</a></li>
+                        <!--<li class="list-group-item border-0"> <a href="#" class="btn btn-primary btn-sm  ">Ver actividad</a></li>-->
                         <li class="list-group-item border-0"><a href="{{route('curso.actividad.examen.pregunta.eliminar',$pregunta->id)}}" class="close btn text-right btn-sm " aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                         </a></li>

@@ -4,11 +4,15 @@
         <h1 class="mt-3 display-1 text-center " > Actividades</h1>
         <div class ="container   bg-light p-3 rounded-lg">
                 <div class ="container shadow-sm m-5    bg-white p-3 rounded-lg" style="width: 90%";>
+                                @if($rol->nombre=="profesor")
                                 <div class="btn-toolbar d-flex flex-row-reverse" role="toolbar" aria-label="Toolbar with button groups">
+                               
                                         <div class="btn-groupmr-5 " role="group" aria-label="Third group">
                                                  <a href="" class="btn btn-info  text-white" data-toggle="modal" data-target="#exampleModal">Crear actividad</a>
                                         </div>
+                                
                                       </div>
+                                      @endif 
                                </div>
         @php
             $countSkip = 0;
@@ -20,11 +24,16 @@
                 <ul class="list-group list-group-horizontal shadow-sm border-0  m-2 ">
                         <li class="list-group-item border-0 "><h5 class = "font-weight-bold text-left">{{$actividad['nombre']}}</h5></li>
                         <li class="list-group-item border-0">Tipo: {{$actividad['tipo']}}</li>
+                        @if($rol->nombre=="profesor")
                         <li class="list-group-item border-0"> <a href="{{route('curso.actividad.editar',['idAct'=>$actividad['id'],'idTipo'=>$actividad['id_tipo'], 'idActGen' => $actividad['id_act_gen'] ])}}" class="btn-light btn-sm  ">Editar</a></li>
-                        <li class="list-group-item border-0"> <a href="#" class="btn btn-primary btn-sm  ">Ver actividad</a></li>
+                        @endif
+                        <li class="list-group-item border-0"> <a href="{{route('curso.actividad.examen',['idExam'=>$actividad['id_act_gen']])}}" class="btn btn-primary btn-sm  ">Ver actividad</a></li>
+                        @if($rol->nombre == "profesor")
                         <li class="list-group-item border-0"><a href="{{route('curso.actividad.eliminar',['idAct'=>$actividad['id'],'tipo'=>$actividad['tipo'],'idGen'=>$actividad['id_act_gen']])}}" class="close btn text-right btn-sm " aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                         </a></li>
+                        
+                        @endif
                 </ul>
                 <div class="w-100"></div>
               <!--  <div class="card  m-2 bd-highlight m-1 text-center  col-lg-11 shadow-sm border-0 pl-0 pr-0" style="width: 18rem; ">  
@@ -59,7 +68,7 @@
  <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog " role="document">
-                  <form action="{{route('curso.actividad.crear')}}" method="POST">
+                  <form action="{{route('curso.actividad.crear',['idCurso'=>$idCurso])}}" method="POST">
                   <div class="modal-content border-0">
                     <div class="modal-header border-0">
                       <h5 class="modal-title" id="exampleModalLabel">Crea nueva actividad</h5>

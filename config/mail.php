@@ -26,7 +26,7 @@ return [
     | Here you may provide the host address of the SMTP server used by your
     | applications. A default option is provided that is compatible with
     | the Mailgun mail service which will provide reliable deliveries.
-    |
+    | 
     */
 
     'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
