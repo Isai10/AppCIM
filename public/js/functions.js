@@ -1,36 +1,86 @@
 var texto="";
-function CrearPregRellTemp()
+
+
+btnPrev = document.getElementById('button-prev');
+if(btnPrev!=null)
 {
-    const buttonAdd = document.querySelector('.preg-relleno');
-    
+btnPrev.addEventListener('click', evento=> {
+    var inputUrl = document.getElementById('urlPage');
+    inputUrl.value = evento.target.href;
+    document.getElementById('form-resp').submit();
+    console.log(evento);
+});
+}
+btnNext = document.getElementById('button-next');
+if(btnNext!=null)
+{
+btnNext.addEventListener('click', evento=> {
+    var inputUrl = document.getElementById('urlPage');
+    inputUrl.value = evento.target.href;
+    document.getElementById('form-resp').submit();
+    console.log(evento);
+});
+}
+
+btnFin = document.getElementById('button-fin');
+if(btnFin!=null)
+{
+    btnFin.addEventListener('click', evento=> {
+    var inputUrl = document.getElementById('urlPage');
+    inputUrl.value = evento.target.href;
+    document.getElementById('form-resp').submit();
+    console.log(evento);
+});
+}
+
+function CrearInputRespRelleno()
+{
+    const buttonAdd = document.querySelector('.resp-relleno');
     
 
         buttonAdd.addEventListener('click', evento=> {
+        console.log(evento);
+
             const contenido = document.querySelector('.cont-resp-relleno');
                 texto.push
                 contenido.innerHTML=  
-                `
-                <div class = "row ml-2 mr-1 mt-1">
-                <ul class="list-group list-group-horizontal  border-0  col ">
-                        <li class="list-group-item border-0 "><h6 class = "font-weight-bold text-left"> ${texto}</h5></li>
-                </ul>
+                 `
+                <input type="text" class="form-control resp-relleno" placeholder="Respuesta de relleno" name = "resp-erronea">
                 <div class="w-100"></div>
-                </div>
-            
-                `
+                `       
         });
 
 }
-
-function LeerInputText()
-{
-    const respRelleno = document.querySelector('.resp-relleno');
-    respRelleno.addEventListener('keydown', evento=> {
-       texto = evento.target.value.toString();
-    });
-}
+//Inicializa y asocia eventos par cada boton de mostrar respuestas de pregunta
+//function MuestraPreguntaCompleta(){
+    var buttons = document.getElementsByClassName('button-ver-preg');
+    for(let i = 0; i<buttons.length;i++)
+    {
+        buttons[i].addEventListener('mousedown', evento=> {
+            evento.preventDefault();
+            name_cont = 'cont-resp' + new String(evento.target.id);
+            const idResp = evento.target.id;
+            document.getElementById(name_cont).style.display ='inline';
+        });
+    }
+//}
+//Inicializa y asocia eventos par cada boton ocultar respuestas de pregunta
+//function OcultaRespuestas()
+//{
+    var buttons = document.getElementsByClassName('button-hide-resp');
+    for(let i = 0; i<buttons.length;i++)
+    {
+        buttons[i].addEventListener('click', evento=> {
+            evento.preventDefault();
+            name_cont = 'cont-resp' + new String(evento.target.id);
+            const idResp = evento.target.id;
+            document.getElementById(name_cont).style.display ='none';
+            console.log(name_cont);
+        });
+    }
+//}
 function ActivarControlesOpcionMult()
-{
+{  
     const select = document.querySelector('.select-tipo-pregunta');
    
     select.addEventListener('click', evento=> {
@@ -43,22 +93,31 @@ function ActivarControlesOpcionMult()
             <div id = "op-multiple">
             <div class="row mb-4 " >
                             <div class="col ">
-                                <input type="text" class="form-control" placeholder="Respuesta" name = "respuesta">
+                                <input type="text" class="form-control border-0 " placeholder="Respuesta" name = "respuesta">
                             </div>
                         </div>
                         <div class="row mb-4">
                                 <div class="col-md-8 ">
-                                    <input type="text" class="form-control resp-relleno" placeholder="Respuesta de relleno" name = "resp-erroneas" onkeydown="LeerInputText();" >
+                                    <input type="text" class="form-control resp-relleno border-0  " placeholder="Respuesta de relleno" name = "resp_erronea1">
                                 </div>
-                                <div class = "col">
-                                        <a href = "#"  class="btn btn btn-light preg-relleno" onclick="CrearPregRellTemp();">
-                                               +
-                                        </a>
+                                <div class="w-100"></div>
+                                <div class="col-md-8 mt-2 ">
+                                    <input type="text" class="form-control resp-relleno border-0  " placeholder="Respuesta de relleno(opcional)" name = "resp_erronea2">
                                 </div>
-                                <div class="cont-resp-relleno">
-                                </div>
+                                <div class="w-100"></div>
+                                <div class="col-md-8 mt-2">
+                                     <input type="text" class="form-control resp-relleno border-0  " placeholder="Respuesta de relleno(opcional)" name = "resp_erronea3">
+                                 </div>
+                                 <div class="w-100"></div>
+                                 <div class="col-md-8 mt-2">
+                                     <input type="text" class="form-control resp-relleno border-0 " placeholder="Respuesta de relleno(opcional)" name = "resp_erronea4">
+                                 </div>
+                                
+
                                 
                             </div>
+                        <div class = "row mb-4 cont-resp-relleno">
+                        </div>
             </div>
             `
         }
@@ -71,11 +130,11 @@ function ActivarControlesOpcionMult()
             <div id = "op-falso-verdadero " class = "mb-4">
             
                 <div class="form-check form-check-inline">
-                <input class="form-check-input " type="radio" name="bool" id="inlineRadio1" value="true">
+                <input class="form-check-input border-0  " type="radio" name="bool" id="inlineRadio1" value="true">
                 <label class="form-check-label" for="inlineRadio1">Falso</label>
                  </div>
                  <div class="form-check form-check-inline ">
-                <input class="form-check-input" type="radio" name="bool" id="inlineRadio2" value="false">
+                <input class="form-check-input border-0  " type="radio" name="bool" id="inlineRadio2" value="false">
                 <label class="form-check-label" for="inlineRadio2">Verdadero</label>
                     </div>
 

@@ -7,7 +7,7 @@ use App\Curso_User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Arr;
 class MainUsuario extends Controller
 {
     public function __construct()
@@ -19,6 +19,10 @@ class MainUsuario extends Controller
         if($request->user()->authorizeRoles([ 'alumno','profesor']))
         {
             $rol =$request->user()->getRole()->nombre;
+
+            Arr::set($dataUser,"role",$rol);
+            Arr::set($dataUser,"id_user",$request->user()->id);
+            session()->put("dataUser",$dataUser);
 
             if($rol=='alumno')
                 $cursosUser = User::find($request->user()->id);

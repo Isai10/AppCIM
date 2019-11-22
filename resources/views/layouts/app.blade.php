@@ -17,10 +17,10 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="{{ asset('js/functions.js') }}" ></script>
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,900,300italic,400italic,700italic,900italic" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -91,11 +91,14 @@
             @yield('content')
         </main>
         <br><br><br><br>
-        <footer class="page-footer font-small pt-4 d-flex align-items-end ">
+        <footer class="page-footer font-small border-top pt-4  ">
             <div class="footer-copyright text-center py-3">© 2019 Copyright:
                 <a href="#" class="text-white " >UASLP</a>
               </div>
           </footer>
+
+          <!--Scripts-->
+          <script src="{{ asset('js/functions.js') }}" ></script>
     </div>
 </body>
 </html>

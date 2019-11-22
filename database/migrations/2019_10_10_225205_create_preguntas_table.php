@@ -18,6 +18,7 @@ class CreatePreguntasTable extends Migration
             $table->unsignedInteger('examene_id');
             $table->foreign('examene_id')->references('id')->on('examenes')->onDelete('cascade');
             $table->string('tipoPregunta');
+            $table->float('valor',4,2);
             $table->string('pregunta');
             $table->timestamps();
         });

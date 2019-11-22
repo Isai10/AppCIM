@@ -8,8 +8,10 @@ use App\Examene;
 use App\TipoActividad;
 use App\Tema;
 use App\Prgunta;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Arr;
 class ActividadesController extends Controller
 {
     public function __construct()
@@ -33,22 +35,24 @@ class ActividadesController extends Controller
     {
         if($request->user()->authorizeRoles([ 'profesor']))
         {
+            
             $tipoActiv = TipoActividad::findOrFail($idTipo)->first();
             
-           // dd($tipoActiv->tipo);
+            
             if($tipoActiv->tipo=="Examen")
             {
                 
               
-                
+               
                 $nombreExam = Examene::findOrFail($idActGen)->where('id','=',$idActGen)->get()->first()->nombre;
                 $idExamen = $idActGen;
+                
                 $actividad = Actividade::findOrFail($idAct)->where('id','=',$idAct)->get()->first();
-               // dd($actividad);
               
                 $curso = Curso::findOrFail($actividad->curso_id)->where('id','=',$actividad->curso_id)->get()->first()->nombre;
-                
-                $tema = Tema::findOrFail($actividad->curso_id)->where('id','=',$actividad->tema_id)->get()->first()->nombre;
+               // dd($actividad->tema_id);
+                $tema = Tema::findOrFail($actividad->tema_id)->where('id','=',$actividad->tema_id)->get()->first()->nombre;
+              
 
                 $examen = ['examen'=>$nombreExam,'idExamen'=>$idExamen,'curso'=>$curso,'tema'=>$tema];
                 $preguntas = Examene::findOrFail($idActGen)->pregunta;
@@ -68,6 +72,11 @@ class ActividadesController extends Controller
         {
             //$tipoAct = $curso = Curso::findOrFail(1);
            // dd('hola');
+           session()->put("id_Curso",$idCurso);
+            $dataUser=session()->get("dataUser");
+            Arr::set($dataUser,"id_curso",$idCurso);
+            session()->put("dataUser",$dataUser); 
+            
             $curso = DB::Table('actividades')
             ->join('tipo_actividads',"actividades.tipoActividad_id","=","tipo_actividads.id")
             ->where('actividades.curso_id',"=",$idCurso)

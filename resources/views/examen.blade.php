@@ -2,67 +2,97 @@
 
 @section('content')
 <div class = "container">
+    
     <div class ="row">
         <div class = "  p-4   mr-1 mt-5 shadow-sm rounded-lg bg-white" style="width: 15rem; height: 15rem;">
             <h6>Duracion: <strong>90:00</strong> min</h6>
-            <h6>Examen: <strong>{{$nombreExamen->nombre}}</strong> </h6>
-            <div class="btn-group-toggle" data-toggle="buttons">
+            <h6>Examen: <strong>{{$examen->nombre}}</strong> </h6>
+            <div class="btn-group-toggle" >
             
-            
-            @for ($i = 0; $i < 10; $i++)
-            
-                <label class="btn btn btn-light   mt-2 mb-2 text-black "   >
-                  <input type="checkbox"  style="width:1rem;"  class = ""checked autocomplete="on"><strong>{{$i}}</strong>
-                </label>
-             
-            @endfor
+                    @php
+                    $i=1;   
+                   @endphp
+                   @foreach ($urls as $url )
+                        @if ($i == $pregunta->currentPage())
+                            <a    href="{{$url}}" class = "btn btn btn-light mt-2 mb-2 text-black active"><strong>{{$i}}</strong></a>
+                        @else
+                            <a   href="{{$url}}" class = "btn btn btn-light mt-2 mb-2 text-black"><strong>{{$i}}</strong></a>
+                        @endif
+                    @php
+                        $i++;
+                    @endphp
+                   @endforeach
+
         </div>
         </div>
+    <form  id = "form-resp" action="{{route('curso.actividad.examen.pregunta.resp.temp',['idPreg'=> $pregunta[0]->id ])}}" method="POST" onsubmit="return enviar();">
+    @csrf 
     <div>
         <div class = "  p-4   ml-1  mt-5 shadow-sm rounded-lg bg-white" style="width: 50rem; height: 25rem;">
 
             <div class="container bg-white mt-5">
                 <div class="container ml-3 mr-3">
-                  <h1 class="display-6">{{  $examen[0]->pregunta}}</h1>
+                  <h1 class="display-6">{{$pregunta[0]->pregunta}}</h1>
+                    @php
+                        $resps = session()->get('respuestas');
+                        
+                    @endphp
                     <div class="container mt-4">
-                        @if($examen[0]->tipoPregunta=="opcion_multiple")
-                            <div class="form-check mt-2 mb-2">
-                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                                    <label class="form-check-label" for="exampleRadios1">
-                                        {{Illuminate\Support\Facades\DB::Table('respuestas')->where('pregunta_id','=',$examen[0]->id)->select('respuesta')->get()->first()->respuesta}}
-                                    </label>
-                                </div>
-                                @for ($i = 0; $i < 3; $i++)
+                        
+                        @if($pregunta[0]->tipoPregunta=="opcion_multiple")
+                                @foreach ($respuestas as $respuesta)
                                 <div class="form-check mt-2 mb-2">
-                                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                                        <label class="form-check-label" for="exampleRadios1">
-                                        Respuesta {{$i}}
-                                        </label>
-                                    </div>
-                                @endfor
+                                    
+                                @if ($resps[$pregunta[0]->id] == $respuesta->id)
+                                    <input class="form-check-input check-input-resp" type="radio" name="idResp" id="exampleRadios1" checked value={{$respuesta->id}} onclick="GuardaRespuesta()" >
+                                @else
+                                    <input class="form-check-input check-input-resp" type="radio" name="idResp" id="exampleRadios1"  value={{$respuesta->id}} onclick="GuardaRespuesta()" >
                                 @endif
-                        @if($examen[0]->tipoPregunta=="falso_verdadero")
+                                        <label class="form-check-label" for="exampleRadios1" >
+                                         {{$respuesta->respuesta}}
+                                        </label>
+                                </div>
+                                @endforeach 
+                                @endif
+                        @if($pregunta[0]->tipoPregunta=="falso_verdadero")
                         <div class="form-check mt-2 mb-2">
-                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                                @if ($resps[$pregunta[0]->id] == $respuesta->id)
+                                 <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" name = "idResp" checked value={{$respuesta->id}} >
+                                @else
+                                <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" name = "idResp"  value={{$respuesta->id}} >
+                                @endif
                                 <label class="form-check-label" for="exampleRadios1">
                                Falso
                                 </label>
                             </div>
                             <div class="form-check mt-2 mb-2">
-                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                                    @if ($resps[$pregunta[0]->id] == $respuesta->id)
+                                    <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" name = "idResp" checked value={{$respuesta->id}} >
+                                   @else
+                                   <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios1" name = "idResp"  value={{$respuesta->id}} >
+                                   @endif
                                     <label class="form-check-label" for="exampleRadios1">
                                     Verdadero
                                     </label>
                                 </div>
                         @endif
-                        @if($examen[0]->tipoPregunta=="abierta")
+                        @if($pregunta[0]->tipoPregunta=="abierta")
                         <label for="descripcion"></label>
-                        <textarea class="form-control" rows="4" id="descripcion" name = "descripcion"></textarea>
-                        <div class = "mt-5  text-center">
-                                <a class="btn btn-primary" href="#" role="button">Guardar</a>    
-                                </div>
+                        @if ($resps[$pregunta[0]->id] != null && $resps[$pregunta[0]->id] != "sc" )
+                        
+                        <textarea class="form-control" rows="4" id="descripcion" name = "resp" > {{$resps[$pregunta[0]->id]}}</textarea>
+                        @else
+                        <textarea class="form-control" rows="4" id="descripcion" name = "resp" ></textarea>
                         @endif
-
+                        
+                        @endif
+                        @if ($pregunta->currentPage()== $examen->pregunta->count())
+                        <div class = "mt-5  text-center">
+                        <a class="btn btn-primary" id="button-fin" href="{{route('curso.actividad.examen.enviar')}}" onclick="return false;" role="button">Terminar examen</a>    
+                            </div>
+                        @endif
+                       
+                        
                        
                         
 
@@ -78,13 +108,18 @@
                     </div>-->
         </div>
         <div class = "mt-3 ml-6 row justify-content-center  ">
-                {{$examen->links()}} 
-             </div>
-    </div> 
+                {{$pregunta->links()}} 
+        </div>
+     </div> 
     </div>
+    <input type="text" class="form-control" id="urlPage" name ="url" style="display:none">
+    </form>
         
 </div>
 
 
+<script type="text/javascript">
+    
+</script>
 
 @endsection

@@ -27,11 +27,11 @@
                         @if($rol->nombre=="profesor")
                         <li class="list-group-item border-0"> <a href="{{route('curso.actividad.editar',['idAct'=>$actividad['id'],'idTipo'=>$actividad['id_tipo'], 'idActGen' => $actividad['id_act_gen'] ])}}" class="btn-light btn-sm  ">Editar</a></li>
                         @endif
-                        <li class="list-group-item border-0"> <a href="{{route('curso.actividad.examen',['idExam'=>$actividad['id_act_gen']])}}" class="btn btn-primary btn-sm  ">Ver actividad</a></li>
+                        <li class="list-group-item border-0"> <a href="{{route('curso.actividad.examen.comenzar',['idExam'=>$actividad['id_act_gen'],'idAct'=>$actividad['id'],'tipoAct'=>$actividad['tipo']])}}" class="btn btn-primary btn-sm  ">Ver actividad</a></li>
                         @if($rol->nombre == "profesor")
                         <li class="list-group-item border-0"><a href="{{route('curso.actividad.eliminar',['idAct'=>$actividad['id'],'tipo'=>$actividad['tipo'],'idGen'=>$actividad['id_act_gen']])}}" class="close btn text-right btn-sm " aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
-                        </a></li>
+                        </a></li> 
                         
                         @endif
                 </ul>

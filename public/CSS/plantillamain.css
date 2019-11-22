@@ -1,3 +1,9 @@
+*{
+    font-family: 'Lato', sans-serif !important;
+    --font-family-sans-serif: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+}
+
 .page-footer 
 {
     background-color: #A1A499;
@@ -24,14 +30,25 @@
 {
     margin-left: 0 !important;
 }
-.container
+.row-resp-true
 {
-   
-    
-   /* margin-left: 0 !important;
-    margin-right: 0 !important;*/
+    background: #F8F991;
 }
-.spaces
-{
-  
+
+.form-control{
+    background:  rgba(0, 0, 0, .04) !important;
+    background-image: initial!important;
+    background-position-x: initial!important;
+    background-position-y: initial!important;
+    background-size: initial;
+   
+    background-attachment: initial!important;
+    background-origin: initial!important;
+    background-clip: initial!important;
+    background-color: rgba(0, 0, 0, 0.04)!important;
+    border:0 !important;
+
+    box-sizing: border-box;
+    font-family: Calibre, Helvetica Neue, Segoe UI, Helvetica, Arial, Lucida Grande, sans-serif !important;
+    font-size: 19px;
 }
