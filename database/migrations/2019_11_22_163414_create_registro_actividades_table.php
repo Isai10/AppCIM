@@ -20,7 +20,6 @@ class CreateRegistroActividadesTable extends Migration
             $table->unsignedInteger('actividade_id');
             $table->foreign('actividade_id')->references('id')->on('actividades')->onDelete('cascade');
             $table->string('estado')->default("NOREALIZADA");
-
             $table->timestamps();
         });
     }

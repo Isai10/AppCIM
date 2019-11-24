@@ -6,6 +6,7 @@ use App\Curso;
 use App\Actividade;
 use App\Examene;
 use App\TipoActividad;
+use App\RegistroActividade;
 use App\Tema;
 use App\Prgunta;
 
@@ -86,6 +87,8 @@ class ActividadesController extends Controller
             
             
             $rol =  User::findOrFail($idUser)->getRole();
+            $user = User::findOrFail($idUser);
+           
             //$curso = Curso::findOrFail(1);
             $actividades = collect();
             //dd($curso);
@@ -93,8 +96,10 @@ class ActividadesController extends Controller
                 if($act->tipo=="Examen")
                 {
                     $nombre = Examene::findOrFail($act->idGenerico)->nombre;
+                    $actRealizada = RegistroActividade::actividadRealizada($act->idAct,$idUser);
+                    
                     $actividades = $actividades
-                    ->concat([['nombre' => $nombre,'tipo'=> $act->tipo,'id'=>$act->idAct,'curso_id' => $act->curso_id , 'id_tipo'=> $act->tipoActividad_id , 'id_act_gen'=>$act->idGenerico]]);
+                    ->concat([['nombre' => $nombre,'tipo'=> $act->tipo,'id'=>$act->idAct,'curso_id' => $act->curso_id , 'id_tipo'=> $act->tipoActividad_id , 'id_act_gen'=>$act->idGenerico,'realizada'=> $actRealizada]]);
                 }
                 else if($act->tipo=="Tarea")
                 {

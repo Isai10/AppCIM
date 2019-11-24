@@ -39,15 +39,14 @@ class ExamenController extends Controller
               $resp_alumno->examene_id = $preg->examene_id;
               $resp_alumno->respuesta = $respuestas[$preg->id];
               $resp_alumno->VoF = null;
-              $resp_alumno->saveOrFail();
-              
-              $reg_activ = new ResgistroActividade();
-              $reg_activ->user_id = $dataUser['id_user'];
-              $reg_activ->actividad_id = $dataUser['id_act'];
-              $reg_activ->estado = "REALIZADA";
-             
-
+              $resp_alumno->saveOrFail();  
            }
+           $reg_activ = new RegistroActividade();
+              $reg_activ->user_id = $dataUser['id_user'];
+              $reg_activ->actividade_id = $dataUser['id_act'];
+              $reg_activ->estado = "REALIZADA";
+              $reg_activ->saveOrFail();
+              return redirect()->action('ActividadesController@actividad', [$dataUser['id_curso'],$dataUser['id_user']]);
         }
     }
     public function enviarExamen(Request $request)

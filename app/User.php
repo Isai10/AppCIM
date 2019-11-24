@@ -36,6 +36,14 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function HasActividadRealizada($idAct,$idUser)
+    {
+        return $this->actividad()->actividadRealizada($idAct,$idUser);
+    }
+    public function actividad()
+    {
+        return $this->hasMany(RegistroActividade::class);
+    }
     public function roles()
     {
         return $this->belongsToMany(Role::class)->withTimestamps();

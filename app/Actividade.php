@@ -9,5 +9,9 @@ class Actividade extends Model
    public function tipo()
     {
         return $this->hasOne('App\TipoActividad')->withTimestamps();
+
+
     }
+
+    
 }
