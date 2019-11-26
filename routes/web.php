@@ -40,7 +40,10 @@ Route::get('mainUsuario/Curso/actividad/examen/enviar/save','ExamenController@sa
 Route::get('mainUsuario/Send','MessageController@send')->name('send');
 Route::post('mainUsuario/Curso/actividad/tarea/modificar/{idAct}/{idGen}','TareasController@modificarTarea')->name('curso.actividad.tarea.modificar');
 Route::get('mainUsuario/Curso/actividad/tarea/now/{idAct}/{idGen}','TareasController@tarea')->name('curso.actividad.tarea');
-Route::post('mainUsuario/Curso/actividad/archivo/subir/{idAct}','ActividadesController@subirArchivo')->name('curso.actividad.archivo.subir');
+Route::post('mainUsuario/Curso/actividad/archivo/subir/{idAct}','ArchivosController@subirArchivo')->name('curso.actividad.archivo.subir');
+Route::get('mainUsuario/Curso/actividad/archivo/ver/{file}','ArchivosController@verArchivo')->name('curso.actividad.archivo.ver');
+
+
 
 Auth::routes(['verify' => true]);
 

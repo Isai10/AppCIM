@@ -41,6 +41,7 @@
                                 @endif
                         
                         @else
+                        
                         <li class="list-group-item border-0 "> <a href="{{route('curso.actividad.examen.comenzar',['idExam'=>$actividad['id_act_gen'],'idAct'=>$actividad['id'],'tipoAct'=>$actividad['tipo']])}}"  class="btn btn-success btn-sm disabled ">Realizada</a></li>
                         @endif
                         @if($rol->nombre == "profesor")
@@ -102,6 +103,7 @@
                                         <option disabled selected >Tipo</option>
                                         <option value="examen" >Examen</option>
                                         <option value="tarea">Tarea</option>
+                                        <option value="concurso">Concurso</option>
                                 </select>
                         <div class="actividadControles" > 
                               <!--  <div class="row mb-4">

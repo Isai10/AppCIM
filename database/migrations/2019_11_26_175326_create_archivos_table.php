@@ -14,7 +14,12 @@ class CreateArchivosTable extends Migration
     public function up()
     {
         Schema::create('archivos', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
+            $table->string("nombre");
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedInteger('actividade_id');
+            $table->foreign('actividade_id')->references('id')->on('actividades')->onDelete('cascade');
             $table->timestamps();
         });
     }

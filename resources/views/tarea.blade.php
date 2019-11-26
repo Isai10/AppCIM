@@ -19,7 +19,16 @@
                                 </div>
                               
                     </div>
+                    @foreach ($archivos as $file)
+                    <ul class="list-group list-group-horizontal shadow-sm border-0  m-2 col  " style="width: 22rem">
+                    <li class="list-group-item border-0 "><h6 class = "font-weight-bold text-left">{{$file->nombre}}</h5></li>
+                    <li class="list-group-item border-0"> <a href="{{route("curso.actividad.archivo.ver",["file"=>$file->nombre])}}" class="btn-light btn-sm  ">Ver</a></li>
+                        <li class="list-group-item border-0"><a href="#" class="close btn text-right btn-sm " aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                        </a></li>
+                    </ul>
                         
+                    @endforeach    
                
             <div class ="row mt-4">
                 <div class = "col  d-flex flex-row-reverse bd-highlight">

@@ -42,7 +42,8 @@ class TareasController extends Controller
            
             $tarea= Tarea::findOrFail($idGen);
             $actividad= Actividade::findOrFail($idAct);
-            return view('tarea',compact('tarea','actividad'));
+            $archivos = DB::table('archivos')->where('actividade_id', '=',$idAct)->where('user_id','=',$request->user()->id)->get();
+            return view('tarea',compact('tarea','actividad','archivos'));
         }
 
     }

@@ -21,35 +21,7 @@ class ActividadesController extends Controller
     {
         $this->middleware('auth');
     }
-     public function subirArchivo(Request $request,$idAct)
-    {
-        if($request->user()->authorizeRoles([ 'profesor','alumno']))
-        {
-            $ext = $request->archivo->extension();
-            switch($ext)
-            {
-                case 'jpeg':
-                    $file_name = uniqid("image_") . "." . $ext;
-                    break;
-                case 'png':
-                    $file_name = uniqid("image_") . "." . $ext;
-                    break;
-                case 'pdf':
-                    $file_name = uniqid("pdf_") . "." . $ext;
-                    break;
-                case 'docx':
-                    $file_name = uniqid("doc_") . "." . $ext;
-                    break;
-                case 'xlsm':
-                    $file_name = uniqid("excel_") . "." . $ext;
-                    break;
-            }
-           // dd($request->archivo->getClientOriginalName());
-            return \back();
-             
-             
-        }
-    }
+
     public function eliminarActividad(Request $request,$idAct,$tipo,$idGen)
     {
         if($request->user()->authorizeRoles([ 'profesor']))
