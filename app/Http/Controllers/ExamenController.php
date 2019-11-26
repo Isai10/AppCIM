@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 
-
+use Carbon\Carbon;
 
 class ExamenController extends Controller
 {
@@ -82,8 +82,29 @@ class ExamenController extends Controller
                 $resps = Arr::set($resps,$idstr,'sc');
             }
             session()->put('respuestas',$resps); //Almacena las respuesatas temporales en la session
-            
-            return view('comenzarExamen',compact('examen'));
+            $actividad = Actividade::findOrFail($idAct);
+            $inicio = Carbon::createFromFormat('Y-m-d H:i:s', $actividad->inicio);
+            $final =  Carbon::createFromFormat('Y-m-d H:i:s', $actividad->fin);
+            $dias = $inicio->diffInDays($final);
+            $horas = $inicio->diffInHours($final);
+            $minutos = $inicio->diffInMinutes($final);
+            if($dias=='0')
+            {
+                $duracion= $horas." horas " .$minutos ." minutos" ;
+            }
+            if($dias == '0' && $horas =='0')
+            {
+                $duracion= $minutos ." minutos" ;
+            }
+            if($dias == '0' && $horas =='0' && $minutos =='0')
+            {
+            $duracion= $minutos ." minutos" ;
+            } 
+            if($dias != '0' && $horas !='0' && $minutos !='0')
+            {
+            $duracion= $dias .' dias '. $horas." horas " .$minutos ." minutos" ;
+            }
+            return view('comenzarExamen',compact('examen','duracion'));
         }
     }
     public function saveRespTemp(Request $request,$idPreg)
@@ -220,10 +241,11 @@ class ExamenController extends Controller
                 $pregunta = $examen->pregunta()->simplePaginate(1);
                 $respuestas = Pregunta::findOrFail($pregunta[0]->id)->respuesta;
                 $urls = $pregunta->getUrlRange(1,$examen->pregunta()->count());
-               
+                
+                
                 if($pregunta->count()>0)
                 {
-                    
+                   
                     return view('examen',compact('examen','pregunta','respuestas','urls'));
                 }
                 else{

@@ -1,6 +1,6 @@
 <div class = "container p-4    mt-5 shadow-sm rounded-lg bg-white" style="width: 40rem; height: auto;">
         <div class ="border-bottom pb-3 mb-2">
-        <div  >
+        <div  class row >
                 Nombre:
               <h1 class = "mt-1 h6 font-weight-bold">{{$examen['examen']}}</h1>
             </div>  
@@ -12,6 +12,10 @@
                     Tema:
                       <h1 class = "mt-1 h6 font-weight-bold">{{$examen['tema']}}</h1>
                     </div>  
+                    <div>
+                        Duracion:
+                          <h1 class = "mt-1 h6 font-weight-bold">{{$examen['duracion']}}</h1>
+                        </div>  
         </div>
         <div class = "row ml-0 mr-0 mt-4">
             

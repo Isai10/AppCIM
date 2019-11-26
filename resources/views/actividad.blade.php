@@ -4,6 +4,7 @@
         <h1 class="mt-3 display-1 text-center " > Actividades</h1>
         <div class ="container   bg-light p-3 rounded-lg">
                 <div class ="container shadow-sm m-5    bg-white p-3 rounded-lg" style="width: 90%";>
+                        
                                 @if($rol->nombre=="profesor")
                                 <div class="btn-toolbar d-flex flex-row-reverse" role="toolbar" aria-label="Toolbar with button groups">
                                
@@ -29,7 +30,16 @@
                         @endif
 
                         @if(!$actividad['realizada'])
-                        <li class="list-group-item border-0"> <a href="{{route('curso.actividad.examen.comenzar',['idExam'=>$actividad['id_act_gen'],'idAct'=>$actividad['id'],'tipoAct'=>$actividad['tipo']])}}" class="btn btn-primary btn-sm  ">Ver actividad</a></li>
+                                @if ($actividad['tipo']=='Examen')
+                                        <li class="list-group-item border-0"> <a href="{{route('curso.actividad.examen.comenzar',['idExam'=>$actividad['id_act_gen'],'idAct'=>$actividad['id'],'tipoAct'=>$actividad['tipo']])}}" class="btn btn-primary btn-sm  ">Ver actividad</a></li>
+                                @else 
+                                    @if ($actividad['tipo']=='Tarea')
+                                        <li class="list-group-item border-0"> <a href="{{route('curso.actividad.tarea',['idAct'=>$actividad['id'],'idGen'=>$actividad['id_act_gen']])}}" class="btn btn-primary btn-sm  ">Ver actividad</a></li>
+                                    @else
+                                        
+                                    @endif
+                                @endif
+                        
                         @else
                         <li class="list-group-item border-0 "> <a href="{{route('curso.actividad.examen.comenzar',['idExam'=>$actividad['id_act_gen'],'idAct'=>$actividad['id'],'tipoAct'=>$actividad['tipo']])}}"  class="btn btn-success btn-sm disabled ">Realizada</a></li>
                         @endif

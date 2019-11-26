@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
+    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
@@ -9,15 +10,15 @@
     <link rel="stylesheet" href="{{ asset("plugins/bootstrap/css/bootstrap.min.css")}}" >
     <link rel="stylesheet" href="{!! asset('CSS/plantillamain.css')!!}" >
 
-    
+   
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-
+    
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
+    <script src="{{ asset('js/app.js') }}" ></script>
+    
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,900,300italic,400italic,700italic,900italic" rel="stylesheet">
@@ -99,6 +100,8 @@
 
           <!--Scripts-->
           <script src="{{ asset('js/functions.js') }}" ></script>
+        <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
+         
     </div>
 </body>
 </html>

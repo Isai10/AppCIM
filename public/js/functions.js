@@ -1,3 +1,5 @@
+
+
 var texto="";
 
 
@@ -202,9 +204,36 @@ function ActivarControlesAct(){
             </div>`
         }
         else{
-            var exmaenDatosInput = document.getElementById("exmaenDatosInput");
-            exmaenDatosInput.style.display = "none";
+          //  var exmaenDatosInput = document.getElementById("exmaenDatosInput");
+          //  exmaenDatosInput.style.display = "none";
+            const contenido = document.querySelector('.actividadControles');
+            contenido.innerHTML= 
+            `
+            <div id= "tareaDatosInput" class="mt-4" >
             
+            <div class="row mb-4">
+                <div class ="col">
+                    <label for="descripcion">Descripcion de la tarea:</label>
+                    <textarea class="form-control" rows="4" id="descripcion" name = "descripcion"></textarea>
+                </div>
+            </div>
+            <div class="row mb-4">
+                    <div class="col">
+                            <div class="form-group">
+                        <label for="fecha" class="form-text text-muted">Fecha limite de carga</label>
+                        <input type="date" name="fecha"  class="form-control" >
+                        </div>
+                    </div>
+            </div>
+                <div class="row mb-4">
+                    <div class="col-sm-6">
+                            <div class="form-group">
+                            <label for="hora_fin" class="form-text text-muted">Hora de cierre</label>
+                            <input type="time" value="11:45:00" class="form-control" name ="hora_fin">
+                            </div>
+                    </div>
+                </div> 
+            </div>`
         }
     });
     

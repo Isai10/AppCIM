@@ -22,6 +22,8 @@ class CreateActividadesTable extends Migration
             $table->string('idGenerico')->unique();
             $table->unsignedInteger('tema_id');
             $table->foreign('tema_id')->references('id')->on('temas')->onDelete('cascade');
+            $table->dateTime('inicio');
+            $table->dateTime('fin');
             $table->timestamps();
         });
     }

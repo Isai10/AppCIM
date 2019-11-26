@@ -19,7 +19,7 @@ class PagesControllerMaestro extends Controller
             
             $curso = new Curso();
             $curso->nombre = $request->nombre;
-            $curso->idProfesor = $request->user()->id;;
+            $curso->idProfesor = $request->user()->id;
             $curso->save();
             
             return back();
