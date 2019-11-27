@@ -17,7 +17,7 @@
                     <select class="form-control select-tipo-pregunta border-0  " placeholder="Tipo"  name = "tipo" onclick="ActivarControlesOpcionMult();">
                         <option disabled selected >Tipo</option>
                         <option value="opcion_multiple">Opcion multiple</option>
-                        <!--<option value="abierta">Abierta</option>-->
+                        <option value="abierta">Abierta</option>
                         <option value="falso_verdadero">Falso o verdadero</option>
                     </select>
                 </div>
