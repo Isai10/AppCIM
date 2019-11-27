@@ -4,6 +4,15 @@
     <div class="container">
     <h1 class="mt-3 display-4 text-center  bg-light rounded" >{{$curso->nombre}}</h1>
     </div>
+    <div class = "container">
+                <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                  <li class="breadcrumb-item"><a href="{{route("mainUsuario")}}">Inicio</a></li>
+                                  <li class="breadcrumb-item active" aria-current="page">Curso</li>
+                                </ol>
+                              </nav>
+    </div>
+    
     <div class = "container mt-5">
             <div class="row">
                     <div class="col-sm-4  ">

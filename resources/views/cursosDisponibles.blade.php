@@ -6,6 +6,14 @@
         
        <h1 class="mt-3 display-1 text-center " > Cursos Disponibles</h1>
        <br><br>
+       <div class = "container">
+                <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                  <li class="breadcrumb-item"><a href="{{route("mainUsuario")}}">Inicio</a></li>
+                                  <li class="breadcrumb-item active" aria-current="page">Curso</li>
+                                </ol>
+                              </nav>
+    </div>
 <div class ="container   bg-light p-3 rounded-lg " style="width: 90%";>
         @if ( session('mensaje') )
         
@@ -27,7 +35,7 @@
             $idUser = Auth::user()->id;
             $countSkip = 0;
         @endphp
-        <div class = "row ml-5">
+        <div class = "row">
                
                 @foreach ($cursos as $curso)
                 @php

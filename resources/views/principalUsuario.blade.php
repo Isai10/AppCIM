@@ -41,7 +41,7 @@
                        <div class="w-100"></div>
                 @endif
                 @endforeach
-                    
+               
                 @elseif( $rol=="profesor")
                 @foreach ($cursosUser as $curso )
                 <div class="card mb-auto m-2 bd-highlight m-1 text-center  col-md-2 shadow-sm border-0 pl-0 pr-0" style="width: 18rem; ">  
