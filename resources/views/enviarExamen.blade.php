@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<br><br><br><br><br>
 <div class = "container">
     
     <div class = "  p-4   ml-1  mt-5 shadow-sm rounded-lg bg-white " style="width: 50rem; height: 25rem;">
@@ -53,4 +54,5 @@
     </div>
     
 </div>
+<br><br><br><br>
 @endsection

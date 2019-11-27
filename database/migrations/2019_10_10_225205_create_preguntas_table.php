@@ -15,8 +15,10 @@ class CreatePreguntasTable extends Migration
     {
         Schema::create('preguntas', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('examene_id');
+            $table->unsignedInteger('examene_id')->nullable();
             $table->foreign('examene_id')->references('id')->on('examenes')->onDelete('cascade');
+          //  $table->unsignedInteger('concurso_id')->nullable();
+          //$table->foreign('concurso_id')->references('id')->on('concursos')->onDelete('cascade');
             $table->string('tipoPregunta');
             $table->float('valor',4,2);
             $table->string('pregunta');

@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class = "container">
+<br><br><br>
+<div class = "container mt-5 pt-5">
     
     <div class ="row">
         <div class = "  p-4   mr-1 mt-5 shadow-sm rounded-lg bg-white" style="width: 15rem; height: 15rem;">
@@ -28,7 +29,7 @@
     <form  id = "form-resp" action="{{route('curso.actividad.examen.pregunta.resp.temp',['idPreg'=> $pregunta[0]->id ])}}" method="POST" onsubmit="return enviar();">
     @csrf 
     <div>
-        <div class = "  p-4   ml-1  mt-5 shadow-sm rounded-lg bg-white" style="width: 50rem; height: 25rem;">
+        <div class = "  p-4   ml-1  mt-5 shadow-sm rounded-lg bg-white" style="width: 50rem; height: auto;">
 
             <div class="container bg-white mt-5">
                 <div class="container ml-3 mr-3">
@@ -116,7 +117,7 @@
     </form>
         
 </div>
-
+<br><br><br><br>
 
 <script type="text/javascript">
     

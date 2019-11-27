@@ -32,12 +32,12 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
            <!-- <div class="container">-->
                <div class="">
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        <img src="{{asset('images/logo.png')}}" alt="#" class = "logoUASLP-ING">
+                    <a class="navbar-brand" id = "nav-logo" href="{{ url('/') }}">
+                        <img src="{{asset('images/logo.png')}}" alt="#" class = "logoUASLP-ING" width="30" height="30" alt="">
                     </a>
-                    <a class="navbar-brand" href="{{ route('mainUsuario') }}">
-                        Home
-                    </a>
+                   
+                    
+                   
                </div>
                
                 
@@ -56,11 +56,11 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Inicia Sesión') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Registrate') }}</a>
                                 </li>
                             @endif
                         @else
@@ -87,14 +87,13 @@
            <!-- </div>-->
         </nav>
 
-        <main class="py-4">
-            <br><br><br>
+        <main class="">
+            
             @yield('content')
         </main>
-        <br><br><br><br>
-        <footer class="page-footer font-small border-top pt-4  ">
+        <footer class="page-footer font-small  ">
             <div class="footer-copyright text-center py-3">© 2019 Copyright:
-                <a href="#" class="text-white " >UASLP</a>
+                <a href="#" class="text-black " >UASLP</a>
               </div>
           </footer>
 

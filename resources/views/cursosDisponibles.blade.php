@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<br><br><br><br>
     <div class =""  >
         
        <h1 class="mt-3 display-1 text-center " > Cursos Disponibles</h1>
@@ -68,7 +69,7 @@
         
         
 </div>
-<br><br>      
+<br><br>    <br><br><br>  
  
     </div>
 @endsection

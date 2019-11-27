@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<br><br><br><br>
 <div class = "container">
 <form action="{{route('curso.actividad.tarea.modificar',['idAct'=>$actividad->id,'idGen'=>$tarea->id])}}" method="POST">
         @csrf  
@@ -56,4 +57,5 @@
     </div>
 </form>
 </div>
+<br><br><br><br>
 @endsection

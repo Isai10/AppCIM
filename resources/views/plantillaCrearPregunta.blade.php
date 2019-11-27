@@ -1,6 +1,7 @@
 
+
 <div class = "container p-4   mt-5 shadow-sm rounded-lg bg-white" style="width: 25rem;">
-        <form action="{{route('curso.actividad.examen.pregunta.crear',$examen['idExamen'])}}" method="POST">
+        <form action="{{route('curso.actividad.examen.pregunta.crear',['idExam'=>$examen['idExamen'],'tipo'=>$tipo])}}" method="POST">
                 @csrf
                 <div class="">
                        
@@ -16,7 +17,7 @@
                     <select class="form-control select-tipo-pregunta border-0  " placeholder="Tipo"  name = "tipo" onclick="ActivarControlesOpcionMult();">
                         <option disabled selected >Tipo</option>
                         <option value="opcion_multiple">Opcion multiple</option>
-                        <option value="abierta">Abierta</option>
+                        <!--<option value="abierta">Abierta</option>-->
                         <option value="falso_verdadero">Falso o verdadero</option>
                     </select>
                 </div>

@@ -15,21 +15,21 @@ class CursosTableSeeder extends Seeder
         //
  
         $curso = new Curso();
-        $curso->nombre = 'matematicas';
+        $curso->nombre = 'Matemáticas';
         $curso->idProfesor = 2;
         $curso->save();
 
         $curso = new Curso();
-        $curso->nombre = 'quimica';
+        $curso->nombre = 'Química';
         $curso->idProfesor = 2;
         $curso->save();
         $curso = new Curso();
-        $curso->nombre = 'español';
+        $curso->nombre = 'Español';
         $curso->idProfesor = 2;
         $curso->save();
 
         $curso = new Curso();
-        $curso->nombre = 'ingles';
+        $curso->nombre = 'Inglés';
         $curso->idProfesor = 2;
         $curso->save();
         

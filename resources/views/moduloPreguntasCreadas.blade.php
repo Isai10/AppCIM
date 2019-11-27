@@ -20,7 +20,8 @@
         <div class = "row ml-0 mr-0 mt-4">
             
             @php
-                $numpreg =1;
+                $numpreg = 1;
+              //  dd($preguntas);
             @endphp
             @foreach ($preguntas as $pregunta)
                 

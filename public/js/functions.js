@@ -203,7 +203,7 @@ function ActivarControlesAct(){
             </div> 
             </div>`
         }
-        else{
+        else if(evento.target.value == "tarea"){
           //  var exmaenDatosInput = document.getElementById("exmaenDatosInput");
           //  exmaenDatosInput.style.display = "none";
             const contenido = document.querySelector('.actividadControles');
@@ -233,6 +233,54 @@ function ActivarControlesAct(){
                             </div>
                     </div>
                 </div> 
+            </div>`
+        }
+        else if(evento.target.value == "concurso")
+        {
+            const contenido = document.querySelector('.actividadControles');
+            contenido.innerHTML=  
+            `
+            <div id= "exmaenDatosInput" class="mt-4" >
+            
+            <div class="row mb-4">
+                <div class ="col">
+                    <label for="descripcion">Descripcion:</label>
+                    <textarea class="form-control" rows="4" id="descripcion" name = "descripcion"></textarea>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col">
+                    <select class="form-control"  placeholder="Tema" name = "id_tema">
+                        <option disabled selected>Tema</option>
+                        <option value="volvo">Volvo</option>
+                        <option value="saab">Saab</option>
+                        <option value="mercedes">Mercedes</option>
+                        <option value="audi">Audi</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mb-4">
+                    <div class="col">
+                            <div class="form-group">
+                        <label for="fecha" class="form-text text-muted">Fecha de concurso</label>
+                        <input type="date" name="fecha"  class="form-control" >
+                        </div>
+                    </div>
+            </div>
+            <div class="row mb-4">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                        <label for="hora_inicio" class="form-text text-muted">Hora de inicio</label>
+                        <input type="time"  value="10:45:00"class="form-control" name ="hora_inicio">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                            <div class="form-group">
+                            <label for="hora_fin" class="form-text text-muted">Hora de cierre</label>
+                            <input type="time" value="11:45:00" class="form-control" name ="hora_fin">
+                            </div>
+                    </div>
+            </div> 
             </div>`
         }
     });

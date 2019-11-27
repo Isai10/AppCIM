@@ -1,22 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class =""  >
+    <div class ="mt-5 pt-5"  >
         
-       <h1 class="mt-3 display-1 text-center " > Mis Cursos</h1>
+      <div class = "container ">
+          <h1 class="mt-3 display-1 text-center " > <img src="{{asset('images/cursos.png')}}"  width="150" height="150" alt="">Mis Cursos</h1>
+      </div>
+      
 
 <div class ="container   bg-light p-3 rounded-lg">
-                <div class ="container shadow-sm m-5    bg-white p-3 rounded-lg" style="width: 90%";>
-                                <div class="btn-toolbar d-flex flex-row-reverse" role="toolbar" aria-label="Toolbar with button groups">
-                                        <div class="btn-groupmr-5 " role="group" aria-label="Third group">
-                                          @if ($rol == 'alumno')
-                                                 <a href="{{route('curso.mas')  }}" class="btn btn-info  text-white">Ver mas cursos</a>
-                                          @elseif ($rol == 'profesor')
-                                                <a href="#" class="btn btn-info  text-white"data-toggle="modal" data-target="#exampleModal">Crear curso</a>
-                                          @endif
-                                        </div>
-                                      </div>
-                               </div>
+               
         @php
             $countSkip = 0;
             $idUser = Auth::user()->id;
@@ -84,7 +77,17 @@
                 
                 
                
-                
+        <div class ="container shadow-sm m-5    bg-white p-3 rounded-lg" style="width: 90%";>
+            <div class="btn-toolbar d-flex flex-row-reverse" role="toolbar" aria-label="Toolbar with button groups">
+                    <div class="btn-groupmr-5 " role="group" aria-label="Third group">
+                      @if ($rol == 'alumno')
+                             <a href="{{route('curso.mas')  }}" class="btn btn-info  text-white">Ver mas cursos</a>
+                      @elseif ($rol == 'profesor')
+                            <a href="#" class="btn btn-info  text-white"data-toggle="modal" data-target="#exampleModal">Crear curso</a>
+                      @endif
+                    </div>
+                  </div>
+           </div>
                     
                
                

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<br><br><br><br>
 <div class = "container">
         <form action="{{route('curso.actividad.archivo.subir',['idAct'=>$actividad->id])}}" enctype="multipart/form-data" method="post">
 
@@ -40,4 +41,5 @@
     </div>
 </form>
 </div>
+<br><br><br><br>
 @endsection

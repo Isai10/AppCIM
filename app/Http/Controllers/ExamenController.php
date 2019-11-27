@@ -142,21 +142,32 @@ class ExamenController extends Controller
         }
     }
 
-    public function crearPregunta(Request $request, $idExam)
+    public function crearPregunta(Request $request, $idExam,$tipo)
     {
+       // dd("hola");
         if($request->user()->authorizeRoles([ 'profesor']))
         {
 
             if($request->tipo == "opcion_multiple")
             {
                 $newPreg = new Pregunta();
-                $newPreg->examene_id= $idExam;
+                if($tipo = "Examen")
+                {
+                    $newPreg->examene_id= $idExam;
+                    //$newPreg->concurso_id= 1;
+                }
+                else if($tipo = "Concurso")
+                {
+                    $newPreg->concurso_id= $idExam;
+                    //$newPreg->examene_id = 1;
+                }
+                
                 $newPreg->tipoPregunta = $request->tipo;
                 $newPreg->pregunta= $request->pregunta;
                 $newPreg->valor=(float)$request->valor;
-
+               // dd($idExam);
                 $newPreg->save();
-
+               
                 $resp = new Respuesta();
                 $resp->pregunta_id = $newPreg->id;
                 $resp->respuesta = $request->respuesta;
@@ -199,7 +210,17 @@ class ExamenController extends Controller
             else if ($request->tipo == "abierta")
             {
                 $newPreg = new Pregunta();
-                $newPreg->examene_id= $idExam;
+                if($tipo = "Examen")
+                {
+                    $newPreg->examene_id= $idExam;
+                    //$newPreg->concurso_id= 1;
+                }
+                else if($tipo = "Concurso")
+                {
+                    $newPreg->concurso_id= $idExam;
+                    //$newPreg->examene_id = 1;
+                }
+                
                 $newPreg->tipoPregunta = $request->tipo;
                  $newPreg->pregunta= $request->pregunta;
                  $newPreg->valor=$request->valor;
@@ -209,7 +230,17 @@ class ExamenController extends Controller
             else if ($request->tipo =="falso_verdadero")
             {
                 $newPreg = new Pregunta();
-                $newPreg->examene_id= $idExam;
+                if($tipo = "Examen")
+                {
+                    $newPreg->examene_id= $idExam;
+                    //$newPreg->concurso_id= 1;
+                }
+                else if($tipo = "Concurso")
+                {
+                    $newPreg->concurso_id= $idExam;
+                    //$newPreg->examene_id = 1;
+                }
+                
                 $newPreg->tipoPregunta = $request->tipo;
                 $newPreg->pregunta= $request->pregunta;
                 $newPreg->valor=$request->valor;
@@ -237,6 +268,7 @@ class ExamenController extends Controller
     {
         if($request->user()->authorizeRoles([ 'profesor','alumno']))
         {
+                
                 $examen = Examene::findOrFail($idExam);
                 $pregunta = $examen->pregunta()->simplePaginate(1);
                 $respuestas = Pregunta::findOrFail($pregunta[0]->id)->respuesta;

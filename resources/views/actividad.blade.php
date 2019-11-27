@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+<br><br><br><br>
 <div class =""  >
         <h1 class="mt-3 display-1 text-center " > Actividades</h1>
         <div class ="container   bg-light p-3 rounded-lg">
@@ -30,7 +31,7 @@
                         @endif
 
                         @if(!$actividad['realizada'])
-                                @if ($actividad['tipo']=='Examen')
+                                @if ($actividad['tipo']=='Examen' ||$actividad['tipo']=='Concurso' )
                                         <li class="list-group-item border-0"> <a href="{{route('curso.actividad.examen.comenzar',['idExam'=>$actividad['id_act_gen'],'idAct'=>$actividad['id'],'tipoAct'=>$actividad['tipo']])}}" class="btn btn-primary btn-sm  ">Ver actividad</a></li>
                                 @else 
                                     @if ($actividad['tipo']=='Tarea')
@@ -165,4 +166,5 @@
                 </div>
               </div>
 </div>
+<br><br><br><br>
 @endsection

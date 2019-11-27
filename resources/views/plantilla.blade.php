@@ -55,10 +55,10 @@
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                   </form>-->
                   <div class="ml-auto">
-                    <button   onclick="location.href = '{{ route('inicioSesion') }}'" type="button" class="btn btn-light ">Iniciar Sesión</button>
+                    <button   onclick="location.href = '{{ route('inicioSesion') }}'" type="button" class="btn btn-outline-primary">Iniciar Sesión</button>
                   </div>
                   <div class="ml-1">
-                        <button onclick="location.href = '{{ route('registroUsuario') }}'"type="button" class="btn btn-light">Registrate</button>
+                        <button onclick="location.href = '{{ route('registroUsuario') }}'"type="button" class="btn btn-outline-success">Registrate</button>
                       </div>
                 </div>
               </nav>

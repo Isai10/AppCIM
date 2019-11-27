@@ -29,7 +29,7 @@ Route::get('mainUsuario/Curso/actividad/{idCurso}/{idUser}','ActividadesControll
 Route::post('mainUsuario/Curso/actividad/crear/{idCurso}','ActividadesController@crearActividad')->name('curso.actividad.crear');
 Route::get('mainUsuario/Curso/actividad/eliminar/{idAct}/{tipo}/{idGen}','ActividadesController@eliminarActividad')->name('curso.actividad.eliminar');
 Route::get('mainUsuario/Curso/actividad/editar/{idAct?}/{idTipo}/{idActGen}','ActividadesController@editarActividad')->name('curso.actividad.editar');
-Route::post('mainUsuario/Curso/actividad/examen/preguntas/crear/{idPreg}','ExamenController@crearPregunta')->name('curso.actividad.examen.pregunta.crear');
+Route::post('mainUsuario/Curso/actividad/examen/preguntas/crear/{idExam}/{tipo}','ExamenController@crearPregunta')->name('curso.actividad.examen.pregunta.crear');
 Route::get('mainUsuario/Curso/actividad/examen/preguntas/eliminar/{idPreg}','ExamenController@eliminarPregunta')->name('curso.actividad.examen.pregunta.eliminar');
 Route::get('mainUsuario/Curso/actividad/examen/comenzar/now/{idExam}','ExamenController@examen')->name('curso.actividad.examen');
 Route::post('mainUsuario/Curso/actividad/examen/preguntas/respfalsa/crear/{idExam}','ExamenController@crearRespFalsa')->name('curso.actividad.examen.pregunta.respuestafalsa.crear');
