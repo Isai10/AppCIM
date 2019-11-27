@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+<br><br><br><br>
     <div class="container">
     <h1 class="mt-3 display-4 text-center  bg-light rounded" >{{$curso->nombre}}</h1>
     </div>
