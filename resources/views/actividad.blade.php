@@ -4,10 +4,8 @@
 <div class =""  >
         <h1 class="mt-3 display-1 text-center " > Actividades</h1>
         <br>
-
-        
         <div class ="container   bg-light p-3 rounded-lg">
-                        @if($rol->nombre=="profesor")
+                @if($rol->nombre=="profesor")
                 <div class ="container shadow-sm m-5    bg-white p-3 rounded-lg" style="width: 90%";>
                                 
                                 
@@ -109,7 +107,7 @@
                                         <option disabled selected >Tipo</option>
                                         <option value="examen" >Examen</option>
                                         <option value="tarea">Tarea</option>
-                                        <option value="concurso">Concurso</option>
+                                        <!--<option value="concurso">Concurso</option>-->
                                 </select>
                         <div class="actividadControles" > 
                               <!--  <div class="row mb-4">

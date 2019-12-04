@@ -1,5 +1,9 @@
 @extends('layouts.app')
 @section('content')
+
+
+
+
 <br><br><br><br>
     <div class="container">
     <h1 class="mt-3 display-4 text-center  bg-light rounded" >{{$curso->nombre}}</h1>
@@ -32,11 +36,14 @@
                                                                           <a class="dropdown-item" href="#">Eliminar</a>
                                                                         </div>
                                                                       </div>
+                                                                      <a href = "{{route('curso.alumnos',['idCurso'=>$curso->id,'idUser'=>$user->id])}}"  class="btn text-info btn-light  ml-2 mr-2">
+                                                                        Alumnos
+                                                                </a>  
                                                 @endif
                                                 <a href = "{{route('curso.actividad',['idCurso'=>$curso->id,'idUser'=>$user->id])}}"  class="btn text-info btn-light  ml-2 mr-2">
                                                         Actividades
                                                 </a>
-                                                       
+                                               
                                                
 
                                              </div>
@@ -90,5 +97,6 @@
                     
             </div>  
     </div>
-    
+<br>
+<br><br><br><br>
 @endsection

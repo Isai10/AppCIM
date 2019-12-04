@@ -17,6 +17,7 @@ class CreateExamenesTable extends Migration
             $table->increments('id');
             $table->string('descripcion');
             $table->string('nombre');
+            $table->string('tipo');
             $table->timestamps();
         });
     }

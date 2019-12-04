@@ -19,6 +19,7 @@ class CreateCursoUserTable extends Migration
             $table->foreign('curso_id')->references('id')->on('cursos')->onDelete('cascade');
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('status')->default("INACTIVO");
             $table->timestamps();
         });
     }

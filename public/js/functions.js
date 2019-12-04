@@ -3,6 +3,18 @@
 var texto="";
 
 
+
+
+switchActive = document.getElementById('customSwitch');
+if(switchActive!=null)
+{
+    switchActive.addEventListener('click', evento=> {
+    document.getElementById('form-resp').submit();
+    console.log(evento);
+});
+}
+
+
 btnPrev = document.getElementById('button-prev');
 if(btnPrev!=null)
 {
@@ -176,6 +188,15 @@ function ActivarControlesAct(){
                         <option value="saab">Saab</option>
                         <option value="mercedes">Mercedes</option>
                         <option value="audi">Audi</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col">
+                    <select class="form-control"  placeholder="Tipo de examen" name = "tipo_exam">
+                        <option disabled selected>Tipo</option>
+                        <option value="Normal">Normal</option>
+                        <option value="Concurso">Concurso</option>
                     </select>
                 </div>
             </div>

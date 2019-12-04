@@ -36,6 +36,13 @@ class ActividadesController extends Controller
             return back();
         }
     }
+    public function editarExamen(Request $request,$idAct,$idTipo,$idActGen)
+    {
+                $examen= Examene::findOrFail($idActGen);
+                $actividad= Actividade::findOrFail($idAct);
+                return view('editarExamen',compact('examen','actividad'));
+    }
+
     public function editarActividad(Request $request,$idAct,$idTipo,$idActGen)
     {
         if($request->user()->authorizeRoles([ 'profesor']))
@@ -83,7 +90,7 @@ class ActividadesController extends Controller
                 //dd($preguntas);
                // $curso = E
                // dd($examen);
-                return view('crearPregunta',compact('examen','preguntas','tipo'));
+                return view('crearPregunta',compact('examen','preguntas','tipo','actividad'));
             }
             else if ($tipoActiv->tipo=="Tarea"){
                 $tarea= Tarea::findOrFail($idActGen);
@@ -92,45 +99,8 @@ class ActividadesController extends Controller
             }
             else if ($tipoActiv->tipo=="Concurso")
             {
-                $tipo = $tipoActiv->tipo;
-                $nombreExam = Concurso::findOrFail($idActGen)->where('id','=',$idActGen)->get()->first()->nombre;
-                $idExamen = $idActGen;
-                $actividad = Actividade::findOrFail($idAct)->where('id','=',$idAct)->get()->first();
-                $curso = Curso::findOrFail($actividad->curso_id)->where('id','=',$actividad->curso_id)->get()->first()->nombre;
-               // dd($actividad->tema_id);
-                $tema = Tema::findOrFail($actividad->tema_id)->where('id','=',$actividad->tema_id)->get()->first()->nombre;
                 
-                $inicio = Carbon::createFromFormat('Y-m-d H:i:s', $actividad->inicio);
-                $final =  Carbon::createFromFormat('Y-m-d H:i:s', $actividad->fin);
-                $dias = $inicio->diffInDays($final);
-                $horas = $inicio->diffInHours($final);
-                $minutos = $inicio->diffInMinutes($final);
-                if($dias=='0')
-                {
-                    $duracion= $horas." horas " .$minutos ." minutos" ;
-                }
-                if($dias == '0' && $horas =='0')
-                {
-                    $duracion= $minutos ." minutos" ;
-                }
-                if($dias == '0' && $horas =='0' && $minutos =='0')
-                {
-                   $duracion= $minutos ." minutos" ;
-                } 
-                if($dias != '0' && $horas !='0' && $minutos !='0')
-                {
-                   $duracion= $dias .' dias '. $horas." horas " .$minutos ." minutos" ;
-                }
-                //dd($duracion);
-               // $dtOttawa->diffInHours($dtVancouver);  
-                $examen = ['examen'=>$nombreExam,'idExamen'=>$idExamen,'curso'=>$curso,'tema'=>$tema,'duracion'=>$duracion];
                
-                $preguntas = Concurso::findOrFail($idActGen)->pregunta;
-               // dd($preguntas);
-                //dd($preguntas);
-               // $curso = E
-               // dd($examen);
-                return view('crearPregunta',compact('examen','preguntas','tipo'));
             }
         }
     }
@@ -190,30 +160,21 @@ class ActividadesController extends Controller
     public function crearActividad(Request $request,$idCurso)
     {
         if($request->user()->authorizeRoles([ 'profesor']))
-        {
-          //  dd("hola");
+        { //dd($request->tipo);
             switch($request->tipo)
             {
                 case "examen":
                     $actgeneric = new Examene();
                     $actgeneric->nombre = $request->nombre;
                     $actgeneric->descripcion = $request->descripcion;
+                    $actgeneric->tipo=$request->tipo_exam;
                     $actgeneric->save();
                     $tipo = "examen";
                     $idTipoAct = 1;
                     $inicio =Carbon::createFromFormat('Y-m-d H:i:s', (String)($request->fecha. $request->hora_inicio));
                     $fin = Carbon::createFromFormat('Y-m-d H:i:s', (String)($request->fecha. $request->hora_fin));
                 break;
-                case "concurso":
-                    $actgeneric = new Concurso();
-                    $actgeneric->nombre = $request->nombre;
-                    $actgeneric->descripcion = $request->descripcion;
-                    $actgeneric->save();
-                    $tipo = "concurso";
-                    $idTipoAct = 3;
-                    $inicio =Carbon::createFromFormat('Y-m-d H:i:s', (String)($request->fecha. $request->hora_inicio));
-                    $fin = Carbon::createFromFormat('Y-m-d H:i:s', (String)($request->fecha. $request->hora_fin));
-                break;
+               
                 
                 case "tarea":
                     
@@ -238,7 +199,7 @@ class ActividadesController extends Controller
             $act->tipoActividad_id = $idTipoAct;
             $act->inicio = $inicio;
             $act->fin = $fin;
-           
+            $act->status= "ACTIVA";
             $act->save();
             
 

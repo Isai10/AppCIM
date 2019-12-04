@@ -14,14 +14,16 @@
                     </div>  
                     <div>
                         Duracion:
-                          <h1 class = "mt-1 h6 font-weight-bold">{{$examen['duracion']}}</h1>
-                        </div>  
+                          <h1 class = "mt-1 h6 font-weight-bold">{{$examen['duracion']}} <a class = "btn btn-primary btn-sm ml-3"  href="{{route('curso.actividad.editar.examen',['idAct'=>$actividad->id,'idTipo'=>$actividad->tipoActividad_id, 'idActGen' => $actividad->idGenerico ])}}">Editar</a></h1>
+                        </div> 
+                        
+                        
         </div>
         <div class = "row ml-0 mr-0 mt-4">
             
             @php
                 $numpreg = 1;
-              //  dd($preguntas);
+              //  dd($preguntas); 
             @endphp
             @foreach ($preguntas as $pregunta)
                 
@@ -29,6 +31,7 @@
                         <li class="list-group-item border-0 "><h6 class = "font-weight-bold text-left">{{$numpreg}}.- {{$pregunta->pregunta}}</h5></li>
                         <li class="list-group-item border-0 "><h6 class = "">Valor: <strong>{{$pregunta->valor}} pts</strong></h5></li>    
                         <li class="list-group-item border-0"> <a href="#" class="btn-light btn-sm  ">Editar</a></li>
+                        
                         <li class="list-group-item border-0 button-ver-preg"> <a href="#" class="btn btn-primary btn-sm  " id= "{{$pregunta->id}}">Ver</a></li>
                         <li class="list-group-item border-0"><a href="{{route('curso.actividad.examen.pregunta.eliminar',$pregunta->id)}}" class="close btn text-right btn-sm " aria-label="Close">
                                 <span aria-hidden="true">&times;</span>

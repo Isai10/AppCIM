@@ -7,7 +7,7 @@
     <div class = "  p-4   ml-1  mt-5 shadow-sm rounded-lg bg-white " style="width: 50rem; height: 25rem;">
             <div class ="row border-bottom mb-3 ml-2 mr-2">
                     <div class ="col">
-                            <h2>Nombre del examen</h2>
+                            <h2>{{$nombreExam}}</h2>
                             <h6>Resumen de preguntas contestadas</h6>
                     </div> 
             </div>

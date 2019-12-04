@@ -33,7 +33,7 @@ Route::post('mainUsuario/Curso/actividad/examen/preguntas/crear/{idExam}/{tipo}'
 Route::get('mainUsuario/Curso/actividad/examen/preguntas/eliminar/{idPreg}','ExamenController@eliminarPregunta')->name('curso.actividad.examen.pregunta.eliminar');
 Route::get('mainUsuario/Curso/actividad/examen/comenzar/now/{idExam}','ExamenController@examen')->name('curso.actividad.examen');
 Route::post('mainUsuario/Curso/actividad/examen/preguntas/respfalsa/crear/{idExam}','ExamenController@crearRespFalsa')->name('curso.actividad.examen.pregunta.respuestafalsa.crear');
-Route::post('mainUsuario/Curso/actividad/examen/preguntas/resptemp/save/{idPreg}','ExamenController@saveRespTemp')->name('curso.actividad.examen.pregunta.resp.temp');
+Route::post('mainUsuario/Curso/actividad/examen/preguntas/resptemp/save/{idPreg}/{tipo}','ExamenController@saveRespTemp')->name('curso.actividad.examen.pregunta.resp.temp');
 Route::get('mainUsuario/Curso/actividad/examen/comenzar/{idExam}/{idAct}/{tipoAct}','ExamenController@preStepExamen')->name('curso.actividad.examen.comenzar');
 Route::get('mainUsuario/Curso/actividad/examen/enviar/now','ExamenController@enviarExamen')->name('curso.actividad.examen.enviar');
 Route::get('mainUsuario/Curso/actividad/examen/enviar/save','ExamenController@saveRespuestas')->name('curso.actividad.examen.enviar.save');
@@ -42,9 +42,11 @@ Route::post('mainUsuario/Curso/actividad/tarea/modificar/{idAct}/{idGen}','Tarea
 Route::get('mainUsuario/Curso/actividad/tarea/now/{idAct}/{idGen}','TareasController@tarea')->name('curso.actividad.tarea');
 Route::post('mainUsuario/Curso/actividad/archivo/subir/{idAct}','ArchivosController@subirArchivo')->name('curso.actividad.archivo.subir');
 Route::get('mainUsuario/Curso/actividad/archivo/ver/{file}','ArchivosController@verArchivo')->name('curso.actividad.archivo.ver');
-
-
-
+Route::get('mainUsuario/Curso/alumnos/{idCurso}/{idUser}','ContentCursoAlumnoController@alumnos')->name('curso.alumnos');
+Route::post('mainUsuario/Curso/alumnos/activar/{idCurso}/{idUser}','ContentCursoAlumnoController@alumnosActivar')->name('curso.alumnos.activar');
+Route::get('mainUsuario/Curso/actividad/editarExamen/{idAct?}/{idTipo}/{idActGen}','ActividadesController@editarExamen')->name('curso.actividad.editar.examen');
+Route::post('mainUsuario/Curso/actividad/examen/modificar/{idAct}/{idGen}','ExamenController@modificarExamen')->name('curso.actividad.examen.modificar');
+Route::post('mainUsuario/Curso/actividad/examen/redirect','ExamenController@examenRedirect')->name('curso.actividad.examen.redirect');
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
