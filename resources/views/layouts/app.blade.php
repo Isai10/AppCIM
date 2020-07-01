@@ -25,6 +25,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
     <title>Plataforma CIM</title>
 </head>
 <body class="back">
@@ -35,9 +36,9 @@
                     <a class="navbar-brand" id = "nav-logo" href="{{ url('/') }}">
                         <img src="{{asset('images/logo.png')}}" alt="#" class = "logoUASLP-ING" width="30" height="30" alt="">
                     </a>
-                   
-                    
-                   
+               </div>
+               <div>
+                   <h1>Cursos</h1>
                </div>
                
                 
@@ -95,11 +96,12 @@
             <div class="footer-copyright text-center py-3">© 2019 Copyright:
                 <a href="#" class="text-black " >UASLP</a>
               </div>
+             
           </footer>
 
           <!--Scripts-->
           <script src="{{ asset('js/functions.js') }}" ></script>
-        <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
+       
          
     </div>
 </body>

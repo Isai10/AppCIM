@@ -14,7 +14,7 @@
         </thead>
         <tbody>
             @foreach ($alumnos as $alumno)
-                 <tr>
+                    <tr>
                     <th scope="row">{{$alumno->id}}</th>
                     <td>{{$alumno->name}}</td>
                     <td><div class="custom-control custom-switch">

@@ -49,6 +49,7 @@ class ContentCursoAlumnoController extends Controller
             $rol = User::findOrFail($idUser)->getRole();
             
             $alumnos = $curso->User()->get();
+             
            // dd($alumnos);
             if($profesor->id == $curso->idProfesor)
             {
